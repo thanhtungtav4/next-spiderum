@@ -1,7 +1,14 @@
 import React from "react";
 import Image from 'next/image';
 import Link from 'next/link';
+
+
 class Header extends React.Component {
+  state = {
+    show: false,
+    showmb: false,
+  }
+  toggle = () => this.setState((currentState) => ({show: !currentState.show}));
   render() {
     return(
       <>
@@ -38,8 +45,10 @@ class Header extends React.Component {
               <li><a href="/"><i className="gg-sun" /></a></li>
             </ul>
           </div>
+          <div>
+    </div>
           <div className="c-header__navBottom">         
-            <div className="c-header__btn" id="navicon"> <span><i className="gg-album" /></span><strong> CÁC CHỦ ĐỀ </strong><span> <i className="gg-chevron-down" /></span></div>
+            <div className="c-header__btn" onClick={this.toggle}> <span><i className="gg-album" /></span><strong> CÁC CHỦ ĐỀ </strong><span> <i className="gg-chevron-down" /></span></div>
             <div className="c-header__btn m-onlysp" id="navicon2"><span><i className="gg-loadbar-doc" /></span><strong>CẬP NHẬT</strong><span> <i className="gg-chevron-down"> </i></span></div>
             <ul className="c-header__menu" id="siteNav2">
               <li>  <Link href="/x"><a>Khoa học - Công nghệ</a></Link></li>
@@ -50,7 +59,8 @@ class Header extends React.Component {
               <li>  <Link href="/"><a>Công nghệ</a></Link></li>
             </ul>
           </div>
-          <ul className="c-header__togge" id="siteNav"> 
+          
+          <ul className={this.state.show ? 'c-header__togge is_active' : 'c-header__togge'}> 
             <li> <Link href="/"><a> <Image src="https://picsum.photos/30/30" alt="" width={30} height={30}/><span>Khoa học - Công nghệ</span></a></Link></li>
             <li> <Link href="/"><a> <Image src="https://picsum.photos/30/30" alt="" width={30} height={30}/><span>Khoa học - Công nghệ</span></a></Link></li>
             <li> <Link href="/"><a> <Image src="https://picsum.photos/30/30" alt="" width={30} height={30}/><span>Khoa học - Công nghệ  </span></a></Link></li>
