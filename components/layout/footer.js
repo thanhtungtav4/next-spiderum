@@ -1,4 +1,5 @@
 import React from "react";
+import ScrollToTopBtn from "../module/ScrollToTop";
 class Footer extends React.Component {
   render() {
     return (
@@ -23,7 +24,8 @@ class Footer extends React.Component {
           <p> <strong> © 2021 Công ty Cổ phần Felizz</strong></p>
         </div>
       </div>
-      <div className="m-bktop"><i className="gg-chevron-up-r"> </i></div>
+      <ScrollToTopBtn/>
+      
     </footer>
     );
   }
