@@ -1,8 +1,10 @@
 import React from "react";
+import Image from 'next/image';
+import Link from 'next/link';
 class Header extends React.Component {
   render() {
     return(
-      <div>
+      <>
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -40,25 +42,25 @@ class Header extends React.Component {
             <div className="c-header__btn" id="navicon"> <span><i className="gg-album" /></span><strong> CÁC CHỦ ĐỀ </strong><span> <i className="gg-chevron-down" /></span></div>
             <div className="c-header__btn m-onlysp" id="navicon2"><span><i className="gg-loadbar-doc" /></span><strong>CẬP NHẬT</strong><span> <i className="gg-chevron-down"> </i></span></div>
             <ul className="c-header__menu" id="siteNav2">
-              <li> <a href="/category.html">Khoa học - Công nghệ</a></li>
-              <li> <a href="/category.html">Truyền cảm hứng</a></li>
-              <li> <a href="/category.html">Thể thao</a></li>
-              <li> <a href="/category.html">Quan điểm - Tranh luận</a></li>
-              <li> <a href="/category.html">Thời tiết</a></li>
-              <li> <a href="/category.html">Công nghệ</a></li>
+              <li>  <Link href="/x"><a>Khoa học - Công nghệ</a></Link></li>
+              <li>  <Link href="/"><a>Truyền cảm hứng</a></Link></li>
+              <li>  <Link href="/"><a>Thể thao</a></Link></li>
+              <li>  <Link href="/"><a>Quan điểm - Tranh luận</a></Link></li>
+              <li>  <Link href="/"><a>Thời tiết</a></Link></li>
+              <li>  <Link href="/"><a>Công nghệ</a></Link></li>
             </ul>
           </div>
           <ul className="c-header__togge" id="siteNav"> 
-            <li><a href> <img src="https://spiderum.com/assets/images/categories/laptop-min.jpg" alt="" /><span>Khoa học - Công nghệ</span></a></li>
-            <li><a href> <img src="https://spiderum.com/assets/images/categories/laptop-min.jpg" alt="" /><span>Khoa học - Công nghệ</span></a></li>
-            <li><a href> <img src="https://spiderum.com/assets/images/categories/laptop-min.jpg" alt="" /><span>Khoa học - Công nghệ  </span></a></li>
-            <li><a href> <img src="https://spiderum.com/assets/images/categories/laptop-min.jpg" alt="" /><span>Khoa học - Công nghệ</span></a></li>
-            <li><a href> <img src="https://spiderum.com/assets/images/categories/laptop-min.jpg" alt="" /><span>Khoa học - Công nghệ</span></a></li>
-            <li><a href> <img src="https://spiderum.com/assets/images/categories/laptop-min.jpg" alt="" /><span>Khoa học - Công nghệ     </span></a></li>
+            <li> <Link href="/"><a> <Image src="https://picsum.photos/30/30" alt="" width={30} height={30}/><span>Khoa học - Công nghệ</span></a></Link></li>
+            <li> <Link href="/"><a> <Image src="https://picsum.photos/30/30" alt="" width={30} height={30}/><span>Khoa học - Công nghệ</span></a></Link></li>
+            <li> <Link href="/"><a> <Image src="https://picsum.photos/30/30" alt="" width={30} height={30}/><span>Khoa học - Công nghệ  </span></a></Link></li>
+            <li> <Link href="/"><a> <Image src="https://picsum.photos/30/30" alt="" width={30} height={30}/><span>Khoa học - Công nghệ</span></a></Link></li>
+            <li> <Link href="/"><a> <Image src="https://picsum.photos/30/30" alt="" width={30} height={30}/><span>Khoa học - Công nghệ</span></a></Link></li>
+            <li> <Link href="/"><a> <Image src="https://picsum.photos/30/30" alt="" width={30} height={30}/><span>Khoa học - Công nghệ</span></a></Link></li>
           </ul>
         </div>
       </header>
-    </div>
+    </>
     )
   }
 }
