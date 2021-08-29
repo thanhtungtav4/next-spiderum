@@ -48,7 +48,7 @@ class Header extends React.Component {
           <div>
     </div>
           <div className="c-header__navBottom">         
-            <div className="c-header__btn" onClick={this.toggle}> <span><i className="gg-album" /></span><strong> CÁC CHỦ ĐỀ </strong><span> <i className="gg-chevron-down" /></span></div>
+            <div className={this.state.show ? 'c-header__btn is_active' : 'c-header__btn'} onClick={this.toggle}> <span><i className="gg-album" /></span><strong> CÁC CHỦ ĐỀ </strong><span> <i className="gg-chevron-down" /></span></div>
             <div className="c-header__btn m-onlysp" id="navicon2"><span><i className="gg-loadbar-doc" /></span><strong>CẬP NHẬT</strong><span> <i className="gg-chevron-down"> </i></span></div>
             <ul className="c-header__menu" id="siteNav2">
               <li>  <Link href="/x"><a>Khoa học - Công nghệ</a></Link></li>
