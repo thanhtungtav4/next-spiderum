@@ -1,6 +1,7 @@
 import React from "react";
 import Image from 'next/image';
 import Link from 'next/link';
+import HeadMeta from "../module/HeadMeta";
 
 
 class Header extends React.Component {
@@ -12,29 +13,7 @@ class Header extends React.Component {
   render() {
     return(
       <>
-      <meta charSet="utf-8" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>Trang chủ - Spiderum</title>
-      <link rel="stylesheet" href="assets/css/style.css" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
-      {/* Primary Meta Tags*/}
-      <meta name="title" content="Trang chủ - Spiderum" />
-      <meta name="description" content="Trang chủ - Spiderum trang tin tức" />
-      {/* Open Graph / Facebook*/}
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content />
-      <meta property="og:title" content="Trang chủ - Spiderum" />
-      <meta property="og:description" content="Trang chủ - Spiderum trang tin tức" />
-      <meta property="og:image" content="https://images.unsplash.com/photo-1629927506216-fcdf656d74de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" />
-      {/* Twitter*/}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content />
-      <meta property="twitter:title" content="Trang chủ - Spiderum" />
-      <meta property="twitter:description" content="Trang chủ - Spiderum trang tin tức" />
-      <meta property="twitter:image" content="https://images.unsplash.com/photo-1629927506216-fcdf656d74de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" />
+      <HeadMeta/>
       <header className="c-header">
         <div className="c-header__inner">
           <div className="c-header__navTop">
