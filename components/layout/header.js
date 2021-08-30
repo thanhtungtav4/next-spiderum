@@ -6,11 +6,6 @@ import MenuTopBottom from "../module/MenuTop";
 
 
 class Header extends React.Component {
-  state = {
-    show: false,
-    showmb: false,
-  }
-  toggle = () => this.setState((currentState) => ({show: !currentState.show}));
   render() {
     return(
       <>
@@ -25,9 +20,9 @@ class Header extends React.Component {
               </a>
             </div>
             <ul className="c-header__icon">
-              <li><a href="#"><i className="gg-search" /></a></li>
-              <li><a href="/"><i className="gg-mail" /></a></li>
-              <li><a href="/"><i className="gg-sun" /></a></li>
+              <li><i className="gg-search" /></li>
+              <li><i className="gg-mail" /></li>
+              <li><i className="gg-sun" /></li>
             </ul>
           </div>
         <div>
