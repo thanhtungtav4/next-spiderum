@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import HeadMeta from "../module/HeadMeta";
 import MenuTopBottom from "../module/MenuTop";
+import DarkMode from "../module/DarkMode";
 
 
 class Header extends React.Component {
@@ -22,7 +23,7 @@ class Header extends React.Component {
             <ul className="c-header__icon">
               <li><i className="gg-search" /></li>
               <li><i className="gg-mail" /></li>
-              <li><i className="gg-sun" /></li>
+              <DarkMode/>
             </ul>
           </div>
         <div>
