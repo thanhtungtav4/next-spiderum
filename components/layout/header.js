@@ -16,8 +16,8 @@ class Header extends React.Component {
           <div className="c-header__navTop">
             <div className="c-header__logo">
               <a className="c-header__img" href="/">
-                <img className="m-onlypc" src="assets/images/logo.png" alt="logo alt" />
-                <img className="m-onlysp" src="assets/images/logosp.png" alt="logo alt" />
+                <img className="m-onlypc" src="/assets/images/logo.png" alt="logo alt" />
+                <img className="m-onlysp" src="/assets/images/logosp.png" alt="logo alt" />
               </a>
             </div>
             <ul className="c-header__icon">

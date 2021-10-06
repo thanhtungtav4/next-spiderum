@@ -5,7 +5,6 @@ import SectionPostRowSlider from '../components/module/Item/SectionPostRowSlider
 import SectionLayoutTab from '../components/module/Item/SectionLayoutTab';
 
 function Home() {
-  //console.log(posts);
   return ( 
       <>
         <h2 className="m-ttl2">Đừng bỏ lỡ </h2>

@@ -6,8 +6,8 @@ import {PlaceholderItemRow, PlaceholderItemVertical} from '../base/PlaceholderIt
 
   function SectionPostHost(props) {
     const [Posts, setPosts] = useState([]);
-    const [PostsVeticel, setPostsVeticel] = useState([]);
     const [Loading, setLoading] = useState(true);
+    const [Posts2, setPosts2] = useState([]);
     
     useEffect(async () =>{
       const response = await PostService.getPost({
@@ -17,13 +17,15 @@ import {PlaceholderItemRow, PlaceholderItemVertical} from '../base/PlaceholderIt
         if (res?.status === 200) {
           setPosts(res.data.data);
           setLoading(false);
+          const arrPost = res.data.data;
+          setPosts2(arrPost.splice(1));
         }
       })
       .catch(err =>console.log(err));
     }, []);
     return (
     <section className="row">
-          {Posts.length > 0  && Loading == false ? (
+          {Posts.length > 0  && Loading == false && Posts2.length > 0 ? (
            <>
             <div className="col-4">
               <div className="m-news"> 
@@ -33,8 +35,11 @@ import {PlaceholderItemRow, PlaceholderItemVertical} from '../base/PlaceholderIt
             
             <div className="col-6">
               <div className="m-news is_vertical">
-                <ItemVertical data={Posts[1]}/>
-                <ItemVertical data={Posts[2]}/>
+                {
+                Posts2.map((post, index) => (
+                  <ItemVertical key={index} data={post}/>
+                ))
+                }
               </div>
             </div>
            </>
