@@ -1,45 +1,46 @@
-import Head from 'next/head';
-import React, {useState, useEffect} from 'react';
-import axios from 'axios'; 
-function PostDetail() {
-  return ( 
-      <>
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import Tags from '../../components/module/base/Tags'
+
+const PostDetail = ({ posts }) => {
+  return (
+    <>
         <section className="m-content"> 
           <div className="m-content__inner">
             <div className="m-content__head"> 
-            <a className="m-content__category" href="/category.html">Science2vn</a>
-              <h1 className="m-content__ttl" itemProp="name"> Khi củ khoai tây gánh trên vai cả thế giới </h1>
-              <p className="m-content__description">Khi bước vào một nhà hàng sang trọng hay đến một quán ăn vặt trên vỉa hè, mọi người có để ý rằng trong thực đơn phụ luôn có món khoai...</p>
-              <div className="m-content__auth"> <img src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/20aecb60f7bc11ea80c5fde05fa8896b.jpg" alt="" />
+              <Link href={`/${encodeURIComponent(posts?.category?.slug)}`}>
+              <a className="m-content__category">{posts?.category?.name}</a>
+              </Link>
+              <h1 className="m-content__ttl" itemProp="name"> {posts?.title}</h1>
+              <p className="m-content__description"> {posts?.description}</p>
+              <div className="m-content__auth">
+                 <img src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/20aecb60f7bc11ea80c5fde05fa8896b.jpg" alt="" />
                 <div className="m-content__auth--name"> <a href="#">Tedisious</a>
-                  <p> 4 tháng 9 2020 </p>
+                  <p> {posts?.created_at} </p>
                 </div>
               </div>
             </div>
-            <div className="m-content__img"> <img itemProp="image" src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80" alt="" /></div>
-            <div className="m-content__body">
-              <h3>2. Gạt đi những trông chờ, hy vọng</h3>
-              <p>Chỉ khoảng 600 năm trước, nếu hỏi hầu hết mọi người trên thế giới củ khoai tây là gì, chắc chẳng có ai có thể trả lời được cho bạn vì đơn giản là ở toàn lục địa Á-Âu và châu Phi không tồn tại loại thực vậy này. Khoai tây lúc ấy chỉ có tại Nam Mỹ, 8000 năm trước những bộ lạc sống ở dãy Andes (Peru ngày nay) đã biết trồng khoai tây để làm lương thực. Với nguồn dinh dưỡng lớn cung cấp cả tinh bột, đạm, chất béo, ... và đặc biệt dễ trồng, khoai tây là một nguồn lương thực hoàn hảo cho vùng đất vốn dĩ thưa đất trồng trọt này. Dần dần, loại lương thực này trở thành nền móng cho sự phát triển rực rỡ của nền văn minh tại Nam Mỹ.</p><img src="https://images.unsplash.com/photo-1605462044683-1e13df4b7826?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1828&q=80" alt="" />
-              <figcaption> Khoai tây đã được trồng tại dãy Andes hàng ngàn năm trước</figcaption>
-              <p>Và rồi, con người bước vào Kỷ nguyên Khám phá - Age of Discovery, những kẻ chinh phục đến từ châu Âu tiến vào châu Mỹ, hủy diệt các nền văn minh bản địa, cướp bóc vàng bạc châu báu và tất nhiên không quên mang theo những đặc sản địa phương. Khoai tây chính là một trong số đó. Và có lẽ những tay chinh phục người Tây Ban Nha khi mang thứ này về chắc hẳn cũng không nghĩ rằng đó là khoảnh khắc họ đã thay đổi lịch sử thế giới mãi mãi. </p>
-              <h3>2. Gạt đi những trông chờ, hy vọng</h3>
-              <blockquote>Bởi một khi đã đưa ra quyết định, họ đã nghĩ đến việc ấy rồi, rằng cả hai không còn là của nhau nữa, và họ đã sẵn sàng đánh đổi.</blockquote>
-              <p>Và rồi, con người bước vào Kỷ nguyên Khám phá - Age of Discovery, những kẻ chinh phục đến từ châu Âu tiến vào châu Mỹ, hủy diệt các nền văn minh bản địa, cướp bóc vàng bạc châu báu và tất nhiên không quên mang theo những đặc sản địa phương. Khoai tây chính là một trong số đó. Và có lẽ những tay chinh phục người Tây Ban Nha khi mang thứ này về chắc hẳn cũng không nghĩ rằng đó là khoảnh khắc họ đã thay đổi lịch sử thế giới mãi mãi.</p>
-              <p>Và rồi, con người bước vào Kỷ nguyên Khám phá - Age of Discovery, những kẻ chinh phục đến từ châu Âu tiến vào châu Mỹ, hủy diệt các nền văn minh bản địa, cướp bóc vàng bạc châu báu và tất nhiên không quên mang theo những đặc sản địa phương. Khoai tây chính là một trong số đó. Và có lẽ những tay chinh phục người Tây Ban Nha khi mang thứ này về chắc hẳn cũng không nghĩ rằng đó là khoảnh khắc họ đã thay đổi lịch sử thế giới mãi mãi.</p>
-              <blockquote>à cũng tin rằng thời hạn của nó đã kết thúc rồi, có những thứ ‘mãi mãi’, chỉ là ‘mãi mãi’ trong khoảnh khắc đó, trong giờ phút đó mà thôi.</blockquote>
-              <p>Và rồi, con người bước vào Kỷ nguyên Khám phá - Age of Discovery, những kẻ chinh phục đến từ châu Âu tiến vào châu Mỹ, hủy diệt các nền văn minh bản địa, cướp bóc vàng bạc châu báu và tất nhiên không quên mang theo những đặc sản địa phương. Khoai tây chính là một trong số đó. Và có lẽ những tay chinh phục người Tây Ban Nha khi mang thứ này về chắc hẳn cũng không nghĩ rằng đó là khoảnh khắc họ đã thay đổi lịch sử thế giới mãi mãi.</p>
+            <div className="m-content__img"> 
+              <Image objectFit="cover"
+                     objectPosition="center"
+                     placeholder="blur" 
+                     width="780px"
+                     height="500px"
+                     layout="responsive" 
+                     itemProp="image" 
+                     src={process.env.NEXT_PUBLIC_REST_API + posts?.image} 
+                     blurDataURL={process.env.NEXT_PUBLIC_REST_API + posts?.image}
+                     alt={posts?.title} />
+              </div>
+            <div className="m-content__body" dangerouslySetInnerHTML={{
+                __html: posts?.content
+              }}>
+              
             </div>
             <div className="m-content__footer"> 
-              <ul className="m-tag"> 
-                <li><a href="#"> GAME THEORY </a></li>
-                <li><a href="#"> LÝ THUYẾT TRÒ CHƠI </a></li>
-                <li><a href="#"> KHOA HỌC </a></li>
-                <li><a href="#"> TÌNH YÊU                </a></li>
-                <li><a href="#"> GAME THEORY </a></li>
-                <li><a href="#"> LÝ THUYẾT TRÒ CHƠI </a></li>
-                <li><a href="#"> KHOA HỌC </a></li>
-                <li><a href="#"> TÌNH YÊU</a></li>
-              </ul>
+              
+              <Tags tags={posts?.tags}/>
               <div className="m-tool">
                 <div className="m-tool__ntl"> <a href="#"> <i className="gg-shape-triangle" /><span> <strong>21</strong></span></a><a href><i className="gg-eye" /><span>21000</span></a></div>
                 <div className="m-tool__ntr"> <a href="#"><i> 
@@ -142,7 +143,36 @@ function PostDetail() {
             </div>
           </div>
         </section>
-      </>
-    )
+    </>
+  )
+
 }
+
+export async function getStaticPaths() {
+  const res = await fetch('http://newsapi.io/api/v1/post/')
+  const posts = await res.json()
+  const paths = posts.data.map((post) => ({
+    params: { slug: post.slug.toString() },
+  }))
+
+   return { paths, fallback: 'blocking' }
+}
+
+
+export async function getStaticProps({ params }) {
+  const res = await fetch(`http://newsapi.io/api/v1/post/${params.slug}`)
+  const posts = await res.json()
+  if (!posts) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: { posts }, // will be passed to the page component as props
+    revalidate: 5,
+  }
+}
+
+
 export default PostDetail

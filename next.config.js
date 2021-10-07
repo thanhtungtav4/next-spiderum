@@ -2,7 +2,7 @@ module.exports = phase => {
   return {
     reactStrictMode: true,
     images: {
-      domains: ['picsum.photos', 'newsapi.io'],
+      domains: ['picsum.photos', 'newsapi.io', 's3-ap-southeast-1.amazonaws.com', 'images.unsplash.com'],
       minimumCacheTTL: 180,
     },
     async rewrites() {
