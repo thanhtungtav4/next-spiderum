@@ -3,6 +3,7 @@ import ItemVertical from '../base/ItemVertical';
 import Pagination from '../base/Pagination';
 import SectionWedget from './SectionWedget';
 import PostService from '../../../services/post_service';
+import {PlaceholderItemVerticalTab} from '../base/PlaceholderItem';
 function SectionLayoutTab(){
   const [PostsTab, setPostsTab] = useState([]);
   const [LoadingTab, setLoadingTab] = useState(true);
@@ -24,6 +25,7 @@ function SectionLayoutTab(){
   }, [LoadingTab]);
     return (
         <>
+        {LoadingTab == false > 0 ? (
         <section className="row">
           <div className="col-9">
             <div className="tab"> 
@@ -59,6 +61,16 @@ function SectionLayoutTab(){
             <SectionWedget/>
           </div>
         </section>
+        ) : (
+        <>
+          <PlaceholderItemVerticalTab/>
+          <PlaceholderItemVerticalTab/>
+          <PlaceholderItemVerticalTab/>
+          <PlaceholderItemVerticalTab/>
+          <PlaceholderItemVerticalTab/>
+          <PlaceholderItemVerticalTab/>
+        </>
+        )}
         </>
     );
 }

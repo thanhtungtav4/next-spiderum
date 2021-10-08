@@ -40,7 +40,17 @@ function ItemVertical({data}){
                   </Link>
                   <div className="m-news__info">
                      <a className="m-news__auth" href="#"> 
-                        <img src="https://picsum.photos/id/227/200/300" alt="auth" />
+                        <div className="image__auth">
+                          <Image 
+                            src="https://picsum.photos/id/227/200/300" 
+                            layout="responsive" 
+                            width="40px"
+                            height="40px"
+                            alt="Name"
+                            placeholder="blur" 
+                            blurDataURL="https://picsum.photos/id/227/200/300"
+                          />
+                        </div>
                         <div className="m-news__name" itemProp="author"> Anh Thư 
                           <div className="m-news__date">{data?.created_at}</div>
                         </div>

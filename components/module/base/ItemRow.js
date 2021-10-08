@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link'
 
 function ItemRow({data}){
-    console.log(data);
     return (
           <article className="m-news__item">
             <Link href={`posts/${encodeURIComponent(data?.slug)}`}>
@@ -43,10 +42,20 @@ function ItemRow({data}){
             
             <div className="m-news__info">
                <a className="m-news__auth" href="#"> 
-                  <img src="https://picsum.photos/id/237/200/300" alt="auth" />
-                  <div className="m-news__name" itemProp="author"> Anh Thư 
-                    <div className="m-news__date">{data?.created_at}</div>
-                  </div>
+                <div className="image__auth">
+                  <Image 
+                    src="https://picsum.photos/id/227/200/300" 
+                    layout="responsive" 
+                    width="40px"
+                    height="40px"
+                    alt="Name"
+                    placeholder="blur" 
+                    blurDataURL="https://picsum.photos/id/227/200/300"
+                  />
+                </div>
+                <div className="m-news__name" itemProp="author"> Anh Thư 
+                  <div className="m-news__date">{data?.created_at}</div>
+                </div>
                 </a>
               <div className="m-news__more"> 
                 <a href>
