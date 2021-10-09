@@ -259,10 +259,16 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const res = await fetch(`http://newsapi.io/api/v1/category/${params.slug}`)
   const categorys = await res.json()
-
-  return { 
-    props: { categorys },
-    revalidate: 5,
+  if (Object.keys(categorys).length != 0 ) {
+    return {
+      props: { categorys },
+      revalidate: 5,
+    }
+  }
+  else{
+    return {
+      notFound: true,
+    }
   }
 }
 

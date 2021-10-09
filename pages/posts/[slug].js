@@ -39,8 +39,12 @@ const PostDetail = ({ posts }) => {
               
             </div>
             <div className="m-content__footer"> 
-              
+            {posts?.tags > 0? (
               <Tags tags={posts?.tags}/>
+              ) : (
+                <>
+                </>
+              )}
               <div className="m-tool">
                 <div className="m-tool__ntl"> <a href="#"> <i className="gg-shape-triangle" /><span> <strong>21</strong></span></a><a href><i className="gg-eye" /><span>21000</span></a></div>
                 <div className="m-tool__ntr"> <a href="#"><i> 
@@ -145,7 +149,6 @@ const PostDetail = ({ posts }) => {
         </section>
     </>
   )
-
 }
 
 export async function getStaticPaths() {
@@ -162,16 +165,18 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const res = await fetch(`http://newsapi.io/api/v1/post/${params.slug}`)
   const posts = await res.json()
-  if (!posts) {
+  if (Object.keys(posts).length != 0 ) {
+    return {
+      props: { posts }, // will be passed to the page component as props
+      revalidate: 5,
+    }
+  }
+  else{
     return {
       notFound: true,
     }
   }
-
-  return {
-    props: { posts }, // will be passed to the page component as props
-    revalidate: 5,
-  }
+  
 }
 
 

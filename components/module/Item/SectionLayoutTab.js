@@ -25,7 +25,7 @@ function SectionLayoutTab(){
   }, [LoadingTab]);
     return (
         <>
-        {LoadingTab == false > 0 ? (
+        {LoadingTab == false? (
         <section className="row">
           <div className="col-9">
             <div className="tab"> 
@@ -64,10 +64,15 @@ function SectionLayoutTab(){
         ) : (
         <>
           <PlaceholderItemVerticalTab/>
+          <br></br>
           <PlaceholderItemVerticalTab/>
+          <br></br>
           <PlaceholderItemVerticalTab/>
+          <br></br>
           <PlaceholderItemVerticalTab/>
+          <br></br>
           <PlaceholderItemVerticalTab/>
+          <br></br>
           <PlaceholderItemVerticalTab/>
         </>
         )}
