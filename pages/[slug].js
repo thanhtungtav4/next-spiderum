@@ -245,9 +245,8 @@ const CategoryPage = ({ category }) => {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('http://newsapi.io/api/v1/category/')
+  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/category/`)
   const categorys = await res.json()
-
   const paths = categorys.map((category) => ({
     params: { slug: category.slug.toString() },
   }))
@@ -257,7 +256,8 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`http://newsapi.io/api/v1/category/${params.slug}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/category/${params.slug}`)
+  
   const categorys = await res.json()
   if (Object.keys(categorys).length != 0 ) {
     return {

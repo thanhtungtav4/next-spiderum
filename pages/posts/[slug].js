@@ -152,7 +152,7 @@ const PostDetail = ({ posts }) => {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('http://newsapi.io/api/v1/post/')
+  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/post/`)
   const posts = await res.json()
   const paths = posts.data.map((post) => ({
     params: { slug: post.slug.toString() },
@@ -163,7 +163,7 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`http://newsapi.io/api/v1/post/${params.slug}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/post/${params.slug}`)
   const posts = await res.json()
   if (Object.keys(posts).length != 0 ) {
     return {
