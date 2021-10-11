@@ -9,10 +9,10 @@ function ItemRow({data}){
               <a className="m-news__img">
                 <Image 
                   itemProp="image"
-                  src={data?.image ? process.env.NEXT_PUBLIC_REST_API + data?.image : 'https://picsum.photos/440/176'} 
+                  src={data?.image ? process.env.NEXT_PUBLIC_REST_API + data?.image : process.env.NEXT_PUBLIC_APP_IMG}
                   layout="fill" alt={data?.title} 
                   placeholder="blur" 
-                  blurDataURL={process.env.NEXT_PUBLIC_REST_API + data?.image}
+                  blurDataURL={data?.image ? process.env.NEXT_PUBLIC_REST_API + data?.image : process.env.NEXT_PUBLIC_APP_IMG}
                 />
               </a>
             </Link>
@@ -43,17 +43,20 @@ function ItemRow({data}){
             <div className="m-news__info">
                <a className="m-news__auth" href="#"> 
                 <div className="image__auth">
-                  <Image 
-                    src="https://picsum.photos/id/227/200/300" 
-                    layout="responsive" 
-                    width="40px"
-                    height="40px"
-                    alt="Name"
-                    placeholder="blur" 
-                    blurDataURL="https://picsum.photos/id/227/200/300"
-                  />
+                <Image 
+                  objectFit="cover"
+                  objectPosition="center"
+                  placeholder="blur" 
+                  width="40px"
+                  height="40px"
+                  layout="responsive" 
+                  itemProp="image" 
+                  src={data?.users?.image ? process.env.NEXT_PUBLIC_REST_API + data?.users?.image : process.env.NEXT_PUBLIC_APP_IMG} 
+                  blurDataURL={data?.users?.image ? process.env.NEXT_PUBLIC_REST_API + data?.users?.image : process.env.NEXT_PUBLIC_APP_IMG}
+                  alt={data?.users?.name}
+                />
                 </div>
-                <div className="m-news__name" itemProp="author"> Anh Thư 
+                <div className="m-news__name" itemProp="author"> {data?.users?.name ? data?.users?.name : process.env.NEXT_PUBLIC_USER_NAME}
                   <div className="m-news__date">{data?.created_at}</div>
                 </div>
                 </a>

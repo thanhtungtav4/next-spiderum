@@ -16,8 +16,21 @@ const PostDetail = ({ posts }) => {
               <h1 className="m-content__ttl" itemProp="name"> {posts?.title}</h1>
               <p className="m-content__description"> {posts?.description}</p>
               <div className="m-content__auth">
-                 <img src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/20aecb60f7bc11ea80c5fde05fa8896b.jpg" alt="" />
-                <div className="m-content__auth--name"> <a href="#">Tedisious</a>
+              <div className="m-content__auth--img">
+                <Image 
+                  objectFit="cover"
+                  objectPosition="center"
+                  placeholder="blur" 
+                  width="56px"
+                  height="56px"
+                  layout="responsive" 
+                  itemProp="image" 
+                  src={posts?.users?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.users?.image : process.env.NEXT_PUBLIC_APP_IMG} 
+                  blurDataURL={posts?.users?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.users?.image : process.env.NEXT_PUBLIC_APP_IMG}
+                  alt={posts?.users?.name}
+                />
+                </div>
+                <div className="m-content__auth--name"> <a href="#">{posts?.users?.name}</a>
                   <p> {posts?.created_at} </p>
                 </div>
               </div>
@@ -30,8 +43,8 @@ const PostDetail = ({ posts }) => {
                      height="500px"
                      layout="responsive" 
                      itemProp="image" 
-                     src={process.env.NEXT_PUBLIC_REST_API + posts?.image} 
-                     blurDataURL={process.env.NEXT_PUBLIC_REST_API + posts?.image}
+                     src={posts?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.image : process.env.NEXT_PUBLIC_APP_IMG} 
+                     blurDataURL={posts?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.image : process.env.NEXT_PUBLIC_APP_IMG}
                      alt={posts?.title} />
               </div>
             <div className="m-content__body" dangerouslySetInnerHTML={{
@@ -113,40 +126,6 @@ const PostDetail = ({ posts }) => {
               <div className="m-news__more"> <a href><i className="gg-shape-triangle"> </i><span>21</span></a><a href><i className="gg-eye" /><span>21000</span></a><a href><i className="gg-transcript" /><span>21</span></a></div>
             </div>
           </div>
-          <div className="m-news__item">
-            <div className="m-news__img"><img src="https://picsum.photos/500/400?random=91" alt="news" /></div>
-            <div className="m-news__content">
-              <div className="m-news__heading"> 
-                <div className="m-news__cate"> <a href="#">Quan điểm - Tranh luận</a><span>5 phút đọc </span></div>
-                <div className="m-news__save"> <i className="gg-bookmark" /></div>
-              </div><a href="#">
-                <h2 className="m-title">Fuckbois, PUA, Single Mom, Red Pills và tác dụng phụ của thuốc.</h2></a>
-              <div className="m-news__ext"> Văn hoá phương Tây du nhập vào kéo theo hàng loạt những...Văn hoá phương Tây du nhập vào kéo theo hàng loạt những... </div>
-            </div>
-            <div className="m-news__info"> <a className="m-news__auth" href="#"> <img src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/c666b030f75911ea8b09fbdb5cbee9ca.jpg" alt="auth" />
-                <div className="m-news__name" itemProp="author"> Anh Thư 
-                  <div className="m-news__date">24 tháng 5</div>
-                </div></a>
-              <div className="m-news__more"> <a href><i className="gg-shape-triangle"> </i><span>21</span></a><a href><i className="gg-eye" /><span>21000</span></a><a href><i className="gg-transcript" /><span>21</span></a></div>
-            </div>
-          </div>
-          <div className="m-news__item">
-            <div className="m-news__img"><img src="https://picsum.photos/500/400?random=9" alt="news" /></div>
-            <div className="m-news__content">
-              <div className="m-news__heading"> 
-                <div className="m-news__cate"> <a href="#">Quan điểm - Tranh luận</a><span>5 phút đọc </span></div>
-                <div className="m-news__save"> <i className="gg-bookmark" /></div>
-              </div><a href="#">
-                <h2 className="m-title">Fuckbois, PUA, Single Mom, Red Pills và tác dụng phụ của thuốc.</h2></a>
-              <div className="m-news__ext"> Văn hoá </div>
-            </div>
-            <div className="m-news__info"> <a className="m-news__auth" href="#"> <img src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/c666b030f75911ea8b09fbdb5cbee9ca.jpg" alt="auth" />
-                <div className="m-news__name" itemProp="author"> Anh Thư 
-                  <div className="m-news__date">24 tháng 5</div>
-                </div></a>
-              <div className="m-news__more"> <a href><i className="gg-shape-triangle"> </i><span>21</span></a><a href><i className="gg-eye" /><span>21000</span></a><a href><i className="gg-transcript" /><span>21                      </span></a></div>
-            </div>
-          </div>
         </section>
     </>
   )
@@ -156,11 +135,10 @@ export async function getStaticPaths() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/post/`)
   const posts = await res.json()
   const paths = posts.data.map((post) => ({
-   params: { slug: post.slug.toString() },
+   params: { slug: post.slug.toString()},
  }))
  return { paths, fallback: 'blocking' }
 }
-
 
 export async function getStaticProps({ params }) {
   try {
@@ -168,7 +146,7 @@ export async function getStaticProps({ params }) {
   const posts = await res.json()
   if (Object.keys(posts).length != 0 ) {
     return {
-      props: { posts }, // will be passed to the page component as props
+      props: { posts, postsRelated }, // will be passed to the page component as props
       revalidate: 5,
     }
   }
