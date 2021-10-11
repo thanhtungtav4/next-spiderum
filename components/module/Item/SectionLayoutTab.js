@@ -20,8 +20,6 @@ function SectionLayoutTab(){
       }
     })
     .catch(err =>console.log(err));
-    console.log('rerender');
-    console.log(Query);
   }, [LoadingTab]);
     return (
         <>

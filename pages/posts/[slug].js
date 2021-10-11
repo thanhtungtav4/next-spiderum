@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Tags from '../../components/module/base/Tags'
+import PostService from '../../services/post_service';
 
 const PostDetail = ({ posts }) => {
   return (
@@ -155,14 +156,14 @@ export async function getStaticPaths() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/post/`)
   const posts = await res.json()
   const paths = posts.data.map((post) => ({
-    params: { slug: post.slug.toString() },
-  }))
-
-   return { paths, fallback: 'blocking' }
+   params: { slug: post.slug.toString() },
+ }))
+ return { paths, fallback: 'blocking' }
 }
 
 
 export async function getStaticProps({ params }) {
+  try {
   const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/post/${params.slug}`)
   const posts = await res.json()
   if (Object.keys(posts).length != 0 ) {
@@ -176,8 +177,14 @@ export async function getStaticProps({ params }) {
       notFound: true,
     }
   }
+  } catch (error) {
+    return {
+      notFound: true,
+    }
+  }
   
 }
+
 
 
 export default PostDetail
