@@ -5,7 +5,7 @@ import Link from 'next/link'
 function ItemRow({data}){
     return (
           <article className="m-news__item">
-            <Link href={`posts/${encodeURIComponent(data?.slug)}`}>
+            <Link href={`/posts/${encodeURIComponent(data?.slug)}`}>
               <a className="m-news__img">
                 <Image 
                   itemProp="image"
@@ -28,12 +28,12 @@ function ItemRow({data}){
                   <span>5 phút đọc </span></div>
                 <div className="m-news__save"> <i className="gg-bookmark" /></div>
               </div>
-              <Link href={`posts/${encodeURIComponent(data?.slug)}`}>
+              <Link href={`/posts/${encodeURIComponent(data?.slug)}`}>
                 <a>
                   <h2 className="m-title" itemProp="name">{data?.title}</h2>
                 </a>
               </Link>
-              <Link href={`posts/${encodeURIComponent(data?.slug)}`}>
+              <Link href={`/posts/${encodeURIComponent(data?.slug)}`}>
                 <a className="m-news__ext">{data?.description}
                 </a>
               </Link>

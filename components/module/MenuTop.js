@@ -25,12 +25,12 @@ function MenuTop(){
             <div className={`c-header__btn ${toggleState.menuA}`} onClick={toggle}> <span><i className="gg-album" /></span><strong> CÁC CHỦ ĐỀ </strong><span> <i className="gg-chevron-down" /></span></div>
             <div className={`c-header__btn m-onlysp ${toggleState.menuB}`} onClick={toggle2} ><span><i className="gg-loadbar-doc" /></span><strong>CẬP NHẬT</strong><span> <i className="gg-chevron-down"> </i></span></div>
             <ul className={`c-header__menu ${toggleState.menuB}`}>
-              <li>  <Link href="/x"><a>Khoa học - Công nghệ</a></Link></li>
-              <li>  <Link href="/"><a>Truyền cảm hứng</a></Link></li>
-              <li>  <Link href="/"><a>Thể thao</a></Link></li>
-              <li>  <Link href="/"><a>Quan điểm - Tranh luận</a></Link></li>
+              <li>  <Link href="/bao-moi"><a>Báo mới</a></Link></li>
+              <li>  <Link href="/thanh-nien"><a>Thanh niên</a></Link></li>
+              <li>  <Link href="/dan-tri"><a>Dân Trí</a></Link></li>
+              <li>  <Link href="/truyen-cam-hung"><a>Quan điểm - Tranh luận</a></Link></li>
+              <li>  <Link href="/cong-nghe"><a>Công nghệ</a></Link></li>
               <li>  <Link href="/"><a>Thời tiết</a></Link></li>
-              <li>  <Link href="/"><a>Công nghệ</a></Link></li>
             </ul>
         </div>
         <ul className={`c-header__togge ${toggleState.menuA}`}> 
