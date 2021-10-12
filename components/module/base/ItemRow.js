@@ -41,7 +41,7 @@ function ItemRow({data}){
             </div>
             
             <div className="m-news__info">
-               <a className="m-news__auth" href="#"> 
+               <a className="m-news__auth"> 
                 <div className="image__auth">
                 <Image 
                   objectFit="cover"

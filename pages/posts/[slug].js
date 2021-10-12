@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Tags from '../../components/module/base/Tags'
-import PostService from '../../services/post_service';
+import ItemRow from '../../components/module/base/ItemRow';
 
 const PostDetail = ({ posts }) => {
   return (
@@ -30,7 +30,8 @@ const PostDetail = ({ posts }) => {
                   alt={posts?.users?.name}
                 />
                 </div>
-                <div className="m-content__auth--name"> <a href="#">{posts?.users?.name}</a>
+                <div className="m-content__auth--name"> 
+                  <a>{posts?.users?.name}</a>
                   <p> {posts?.created_at} </p>
                 </div>
               </div>
@@ -60,11 +61,11 @@ const PostDetail = ({ posts }) => {
                 </>
               )}
               <div className="m-tool">
-                <div className="m-tool__ntl"> <a href="#"> <i className="gg-shape-triangle" /><span> <strong>21</strong></span></a><a href><i className="gg-eye" /><span>21000</span></a></div>
-                <div className="m-tool__ntr"> <a href="#"><i> 
+                <div className="m-tool__ntl"> <a> <i className="gg-shape-triangle" /><span> <strong>21</strong></span></a><a href><i className="gg-eye" /><span>21000</span></a></div>
+                <div className="m-tool__ntr"> <a><i> 
                       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" height={25} width={25}>
                         <path className="cls-1" d="M475,251.36c0-124.29-100.71-225-225-225S25,127.07,25,251.36c0,112.3,82.28,205.39,189.84,222.28V316.4H157.69v-65h57.15V201.79c0-56.39,33.57-87.53,85-87.53,24.62,0,50.37,4.39,50.37,4.39V174H321.82c-27.95,0-36.66,17.35-36.66,35.14v42.23h62.4l-10,65H285.16V473.64C392.72,456.75,475,363.66,475,251.36Z" fill="#3b5999" />
-                      </svg></i></a><a href="#"><i className="gg-bookmark" /></a></div>
+                      </svg></i></a><a><i className="gg-bookmark" /></a></div>
               </div>
             </div>
           </div>
@@ -73,12 +74,29 @@ const PostDetail = ({ posts }) => {
                 <svg width={19} height={17} viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg">
                   <path d="M8.32031 3.98438L3.00781 12.5H13.6719L8.32031 3.98438ZM8.32031 0.820312L16.6797 14.1797H0L8.32031 0.820312Z" />
                 </svg></a>
-              <div className="m-sticky__count">88</div><a href="#">
+              <div className="m-sticky__count">88</div><a>
                 <svg width={19} height={17} viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg">
                   <path d="M8.67969 11.0156L13.9922 2.5L3.32812 2.5L8.67969 11.0156ZM8.67969 14.1797L0.320311 0.820314L17 0.820312L8.67969 14.1797Z" />
                 </svg></a>
             </div>
-            <div className="m-sticky__auth"> <a href><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=100" alt="" /></a></div>
+            <div className="m-sticky__auth"> 
+              <a>
+              <div className="m-sticky__auth--img"> 
+              <Image 
+                  objectFit="cover"
+                  objectPosition="center"
+                  placeholder="blur" 
+                  width="56px"
+                  height="56px"
+                  layout="responsive" 
+                  itemProp="image" 
+                  src={posts?.users?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.users?.image : process.env.NEXT_PUBLIC_APP_IMG} 
+                  blurDataURL={posts?.users?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.users?.image : process.env.NEXT_PUBLIC_APP_IMG}
+                  alt={posts?.users?.name}
+                />
+              </div>
+              </a>
+            </div>
             <div className="m-sticky__post"><a href><i className="gg-bookmark" /></a>
               <div className="m-sticky__cmn"><a href>
                   <svg width={18} height={19} viewBox="0 0 18 19" xmlns="http://www.w3.org/2000/svg">
@@ -107,25 +125,24 @@ const PostDetail = ({ posts }) => {
             </div>
           </div>
         </section>
+       
         <h2 className="m-ttl2">Bài viết nổi bật khác</h2>
+        
         <section className="m-news is_row">
-          <div className="m-news__item">
-            <div className="m-news__img"><img src="https://picsum.photos/500/400?random=92" alt="news" /></div>
-            <div className="m-news__content">
-              <div className="m-news__heading"> 
-                <div className="m-news__cate"> <a href="#">Quan điểm - Tranh luận</a><span>5 phút đọc </span></div>
-                <div className="m-news__save"> <i className="gg-bookmark" /></div>
-              </div><a href="#">
-                <h2 className="m-title">Fuckbois, PUA, Single Mom, Red Pills và tác dụng phụ của thuốc.</h2></a>
-              <div className="m-news__ext"> Văn hoá phương Tây du nhập vào kéo theo hàng loạt những...Văn hoá phương Tây du nhập vào kéo theo hàng loạt những... </div>
-            </div>
-            <div className="m-news__info"> <a className="m-news__auth" href="#"> <img src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/c666b030f75911ea8b09fbdb5cbee9ca.jpg" alt="auth" />
-                <div className="m-news__name" itemProp="author"> Anh Thư 
-                  <div className="m-news__date">24 tháng 5</div>
-                </div></a>
-              <div className="m-news__more"> <a href><i className="gg-shape-triangle"> </i><span>21</span></a><a href><i className="gg-eye" /><span>21000</span></a><a href><i className="gg-transcript" /><span>21</span></a></div>
-            </div>
-          </div>
+          <>
+            {typeof posts.related_post !=  undefined && posts.related_post != null  && posts.related_post.length > 0 ? (
+              <>
+                {
+                  posts.related_post.map((data, index) => (
+                    <ItemRow key={index} data={data}/>
+                  ))
+                }
+              </>
+            ) : (
+             <>
+             </>
+            )}
+         </>
         </section>
     </>
   )
@@ -146,7 +163,7 @@ export async function getStaticProps({ params }) {
   const posts = await res.json()
   if (Object.keys(posts).length != 0 ) {
     return {
-      props: { posts, postsRelated }, // will be passed to the page component as props
+      props: { posts}, // will be passed to the page component as props
       revalidate: 5,
     }
   }
