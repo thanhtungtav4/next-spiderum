@@ -34,7 +34,7 @@ function SectionPostRowSlider(){
   useEffect(async () =>{
     const response = await PostService.getPost({
       cursorPaginate: 1,
-      currentMonth: true,
+      currentsMonth: true,
       limit: 20
     }).then(res => {
       if (res?.status === 200) {

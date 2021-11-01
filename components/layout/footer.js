@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link'
 import ScrollToTopBtn from "../module/ScrollToTop";
 class Footer extends React.Component {
   render() {
@@ -7,10 +8,26 @@ class Footer extends React.Component {
       <div className="c-footer__inner">
         <div className="c-footer__logo"> <img src="assets/images/logo.png" alt="" /></div>
         <ul className="c-footer__menu"> 
-          <li> <a href>Về Spiderum</a></li>
-          <li> <a href>Chuyên mục            </a></li>
-          <li> <a href>Điều khoản sử dụng</a></li>
-          <li> <a href="https://huongluafood.com/">Đặc sản miền tây</a></li>
+          <li> 
+            <Link href="/">
+            <a>Về Spiderum</a>
+            </Link>
+          </li>
+          <li> 
+            <Link href="/">
+              <a>Chuyên mục            </a>
+            </Link>
+          </li>
+          <li> 
+            <Link href="/">
+             <a>Điều khoản sử dụng</a>
+            </Link>
+          </li>
+          <li> 
+            <Link  href="https://huongluafood.com/">
+              <a>Đặc sản miền tây</a>
+            </Link>
+          </li>
         </ul>
       </div>
       <div className="c-footer__bottom"> 

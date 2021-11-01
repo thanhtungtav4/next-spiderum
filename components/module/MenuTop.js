@@ -30,7 +30,6 @@ function MenuTop(){
               <li>  <Link href="/dan-tri"><a>Dân Trí</a></Link></li>
               <li>  <Link href="/truyen-cam-hung"><a>Quan điểm - Tranh luận</a></Link></li>
               <li>  <Link href="/cong-nghe"><a>Công nghệ</a></Link></li>
-              <li>  <Link href="/"><a>Thời tiết</a></Link></li>
             </ul>
         </div>
         <ul className={`c-header__togge ${toggleState.menuA}`}> 

@@ -1,77 +1,52 @@
 
 import React, {SyntheticEvent, useState} from 'react';
 import Head from "next/head";
-import axios from 'axios';
 import {useRouter} from "next/router";
+import PostService from '../../services/post_service';
+import axios from 'axios';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const router = useRouter();
-    let login_token = null;
+    let [ username, setUsername ] = useState('');
+    let [ password, setPassword ] = useState('');
 
     const handleSubmit = async ( e ) => {
         e.preventDefault();
 
         const headers = {
-            "Content-Type" : `multipart/form-data`
+            "Content-Type" : `multipart/form-data`,
+            credentials: 'same-origin',
+            Accept: 'application/json',
         };
-
-        let data = new FormData();
-        data.append( 'username', username );
-        data.append( 'password', password );
-
-        let result = await axios( {
-            method:'post',
-            url: 'login-verify',
-            baseURL: API_URL,
-            data: data,
-            headers: headers,
-        } );
-
-        let response = result.data;
-
-        if( response['success'] ){
-            console.log("Login Successful");
-            login_token = response['token'];
-        } else {
-            console.log("Failed to Login");
-        }
-
-    }
-    
-    const submit = async (SyntheticEvent) => {
-        e.preventDefault();
-        console.log(e);
-        // await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/user/login`, {
-        //     credentials: 'same-origin',
-        //     method: 'POST',
-        //     headers: {
-        //       Accept: 'application/json',
-        //       'Content-Type': 'application/json',
-        //       credentials: 'include',
-        //     },
-        //     body: JSON.stringify({
-        //         email,
-        //         password
-        //     })
-        //   })
-
-        // await router.push('/');
+        axios.defaults.withCredentials = true;
+        const response = await PostService.postLogin({
+                email: username,
+                password : password
+          }).then(res => {
+            if (res?.status === 200) {
+             console.log(res)
+            }
+          })
+          .catch(err =>console.log(err));
     }
     return (
-        <form onSubmit={submit}>
-        <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-        <input type="email" className="form-control" placeholder="Email" required
-               onChange={e => setEmail(e.target.value)}
-        />
-
-        <input type="password" className="form-control" placeholder="Password" required
-               onChange={e => setPassword(e.target.value)}
-        />
-
-        <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    </form>
+        <div>
+        <div>
+            <form onSubmit={ ( e ) => handleSubmit( e ) } action="" method="post">
+                <div>
+                    <label htmlFor="">Username</label><br />
+                    <input onInput={ ( e ) => setUsername( e.target.value ) } type="text" id="username" value={ username } />
+                </div>
+                <div>
+                    <label htmlFor="">Password</label><br />
+                    <input onInput={ ( e ) => setPassword( e.target.value ) } type="password" id="password" value={ password } />
+                </div>
+                <div>
+                    <input type="submit" value="Login" />
+                    {/* <button onClick={get_user} type="button" >Get User</button> */}
+                </div>
+            </form>
+        </div>
+    </div>
     );
 };
 

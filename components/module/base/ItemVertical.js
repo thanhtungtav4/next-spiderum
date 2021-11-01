@@ -39,7 +39,7 @@ function ItemVertical({data}){
                     </a>
                   </Link>
                   <div className="m-news__info">
-                     <a className="m-news__auth" href="#"> 
+                     <a className="m-news__auth"> 
                         <div className="image__auth">
                           <Image 
                             objectFit="cover"
@@ -59,15 +59,15 @@ function ItemVertical({data}){
                         </div>
                       </a>
                     <div className="m-news__more"> 
-                      <a href>
+                      <a>
                         <i className="gg-shape-triangle"> </i>
                         <span>21</span>
                       </a>
-                      <a href>
+                      <a>
                         <i className="gg-eye" />
                         <span>21000</span>
                       </a>
-                      <a href>
+                      <a>
                         <i className="gg-transcript" />
                         <span>21</span>
                       </a>

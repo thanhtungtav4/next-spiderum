@@ -4,24 +4,32 @@ import SectionPostHost from '../components/module/Item/SectionPostHost';
 import SectionPostRowSlider from '../components/module/Item/SectionPostRowSlider';
 import SectionLayoutTab from '../components/module/Item/SectionLayoutTab';
 
-function Home() {
+function Home({postData}) {
   return ( 
       <>
         <h2 className="m-ttl2">Đừng bỏ lỡ </h2>
         <SectionPostHost />
         <h2 className="m-ttl2">BÀI VIẾT CỦA THÁNG</h2>
         <SectionPostRowSlider />
-        <SectionLayoutTab/>
+        <SectionLayoutTab postData={postData}/>
       </>
     )
 }
-// export async function getStaticProps() {
-//   const res = await axios.get('http://newsapi.io/api/v1/post/?cursorPaginate=1&numPaginate=3')
-//   return {
-//     props: {
-//       posts : res.data.data,
-//     },
-//     revalidate: 10,
-//   }
-// }
+export const getServerSideProps = async ({ query }) => {
+  // Fetch the first page as default
+  const page = query.page || 1
+  let postData = null
+  // Fetch data from external API
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/post/?page=${page}`)
+    if (res.status !== 200) {
+      throw new Error("Failed to fetch")
+    }
+    postData = await res.json()
+  } catch (err) {
+    postData = { error: { message: err.message } }
+  }
+  // Pass data to the page via props
+  return { props: { postData } }
+}
 export default Home

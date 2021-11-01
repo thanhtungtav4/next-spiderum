@@ -15,10 +15,12 @@ class Header extends React.Component {
         <div className="c-header__inner">
           <div className="c-header__navTop">
             <div className="c-header__logo">
-              <a className="c-header__img" href="/">
+              <Link href="/">
+              <a className="c-header__img" >
                 <img className="m-onlypc" src="/assets/images/logo.png" alt="logo alt" />
                 <img className="m-onlysp" src="/assets/images/logosp.png" alt="logo alt" />
               </a>
+              </Link>
             </div>
             <ul className="c-header__icon">
               <li><i className="gg-search" /></li>
