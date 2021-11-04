@@ -1,46 +1,77 @@
+
 import React, {SyntheticEvent, useState} from 'react';
+import Head from "next/head";
 import {useRouter} from "next/router";
+import PostService from '../../services/post_service';
+import axios from 'axios';
+import Link from 'next/link';
+import styles  from "../../styles/Login.module.css";
 
 const Register = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [ name, setName ] = useState('');
+    const [ username, setUsername ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ loginToken, setloginToken] = useState('');
+    const [message, setMessage] = useState({
+        name: ' ',
+        email: ' ',
+        password: ' ',
+    });
     const router = useRouter();
 
-    const submit = async (SyntheticEvent) => {
+    const handleSubmit = async ( e ) => {
         e.preventDefault();
-
-        await fetch('http://newsapi.io/api/v1/user/register', {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                name,
-                email,
-                password
-            })
-        });
-
-        await router.push('/');
-    }
-
+        axios.defaults.withCredentials = true;
+        const response = await axios.post(process.env.NEXT_PUBLIC_SHOP_URL + '/api/v1/user/register', {
+            name: name,
+            email: username,
+            password : password,
+          }, { 
+              withCredentials: true, 
+              credentials: 'include'
+         })
+          .then(function (response) {
+            if (response?.status === 200) {
+                console.log(response);
+            };
+          })
+          .catch((error) => {
+            // Error 😨
+            if (error.response) {
+                setMessage({
+                        name : error.response.data.name,
+                        email : error.response.data.email,
+                        password : error.response.data.password
+                    });
+            } else if (error.request) {
+                console.log(error.request);
+            } else {
+                console.log('Error', error.message);
+            }
+          });
+     }
     return (
-            <form onSubmit={submit}>
-                <h1 className="h3 mb-3 fw-normal">Please register</h1>
-
-                <input className="form-control" placeholder="Name" required
-                       onChange={e => setName(e.target.value)}
-                />
-
-                <input type="email" className="form-control" placeholder="Email" required
-                       onChange={e => setEmail(e.target.value)}
-                />
-
-                <input type="password" className="form-control" placeholder="Password" required
-                       onChange={e => setPassword(e.target.value)}
-                />
-
-                <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+        <div className={styles.auth}>
+           
+            <form onSubmit={ ( e ) => handleSubmit( e ) } method="post">
+                <a className={styles.logo}>
+                    <img src="https://auth.spiderum.com/assets-auth/images/spiderum-logo.png"/>
+                </a>
+                <br/>
+                <label htmlFor="">Full name</label><br />
+                <input onInput={ ( e ) => setName( e.target.value ) }  type="text" id="name" value={ name } />
+                <p className={styles.err}>{message.name}</p>
+                <label htmlFor="">Email</label><br />
+                <input onInput={ ( e ) => setUsername( e.target.value ) }  type="email" id="username" value={ username } />
+                <p className={styles.err}>{message.email}</p>
+                <label htmlFor="">Password</label><br />
+                <input onInput={ ( e ) => setPassword( e.target.value ) } type="password" id="password" value={ password } />
+                <p className={styles.err}>{message.password}</p>
+                <input type="submit" value="Đăng Ký" className={styles.btn}/>
+                <p>Bạn đã có tài khoản? <Link href="/auth/login">Đăng Nhập</Link></p>
+                
             </form>
+        </div>
     );
 };
 
