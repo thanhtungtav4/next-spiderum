@@ -16,6 +16,7 @@ const Register = () => {
         name: ' ',
         email: ' ',
         password: ' ',
+        totail: ' ',
     });
     const router = useRouter();
 
@@ -32,7 +33,9 @@ const Register = () => {
          })
           .then(function (response) {
             if (response?.status === 200) {
-                console.log(response);
+                setMessage({
+                    totail : response.data.success,
+                });
             };
           })
           .catch((error) => {
@@ -58,16 +61,17 @@ const Register = () => {
                     <img src="https://auth.spiderum.com/assets-auth/images/spiderum-logo.png"/>
                 </a>
                 <br/>
-                <label htmlFor="">Full name</label><br />
+                <label htmlFor="">* Full name</label><br />
                 <input onInput={ ( e ) => setName( e.target.value ) }  type="text" id="name" value={ name } />
                 <p className={styles.err}>{message.name}</p>
-                <label htmlFor="">Email</label><br />
+                <label htmlFor="">* Email</label><br />
                 <input onInput={ ( e ) => setUsername( e.target.value ) }  type="email" id="username" value={ username } />
                 <p className={styles.err}>{message.email}</p>
-                <label htmlFor="">Password</label><br />
+                <label htmlFor="">* Password</label><br />
                 <input onInput={ ( e ) => setPassword( e.target.value ) } type="password" id="password" value={ password } />
                 <p className={styles.err}>{message.password}</p>
                 <input type="submit" value="Đăng Ký" className={styles.btn}/>
+                <p className={styles.sus}>{message.totail}</p>
                 <p>Bạn đã có tài khoản? <Link href="/auth/login">Đăng Nhập</Link></p>
                 
             </form>

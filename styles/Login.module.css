@@ -2,7 +2,7 @@
     width: 349px;
     max-width: 100%;
     padding: 20px;
-    margin: 40px auto 8rem;
+    margin: 20px auto 8rem;
     min-height: 50vh;
 }
 .auth form input{
@@ -45,4 +45,7 @@
     color: red;
     margin-top: -10px;
     font-weight: 500;
+}
+.sus{
+    color: seagreen;
 }

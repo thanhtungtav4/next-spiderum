@@ -14,6 +14,7 @@ const Login = () => {
     const [message, setMessage] = useState({
         email: ' ',
         password: ' ',
+        totail: ' ',
     });
     const router = useRouter();
 
@@ -44,7 +45,8 @@ const Login = () => {
                  */
                 setMessage({
                         email : error.response.data.email,
-                        password : error.response.data.password
+                        password : error.response.data.password,
+                        totail: error.response.data.message
                     });
             } else if (error.request) {
                 /*
@@ -102,13 +104,14 @@ const Login = () => {
                     <img src="https://auth.spiderum.com/assets-auth/images/spiderum-logo.png"/>
                 </a>
                 <br/>
-                <label htmlFor="">Email</label><br />
+                <label htmlFor="">* Email :</label><br />
                 <input onInput={ ( e ) => setUsername( e.target.value ) }  type="email" id="username" value={ username } />
                 <p className={styles.err}>{message?.email}</p>
-                <label htmlFor="">Password</label><br />
+                <label htmlFor="">* Password :</label><br />
                 <input onInput={ ( e ) => setPassword( e.target.value ) } type="password" id="password" value={ password } />
                 <p className={styles.err}>{message?.password}</p>
                 <input type="submit" value="Login" className={styles.btn}/>
+                <p className={styles.err}>{message?.totail}</p>
                 <p>Không có tài khoản? <Link href="/auth/register">Đăng ký ngay</Link></p>
             </form>
         </div>
