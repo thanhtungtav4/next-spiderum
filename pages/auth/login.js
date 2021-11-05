@@ -12,9 +12,8 @@ const Login = () => {
     const [ password, setPassword ] = useState('');
     const [ loginToken, setloginToken] = useState('');
     const [message, setMessage] = useState({
-        email: ' ',
-        password: ' ',
-        totail: ' ',
+        totail: null,
+        success: null
     });
     const router = useRouter();
 
@@ -31,9 +30,12 @@ const Login = () => {
           .then(function (response) {
             if (response?.status === 200) {
                 setloginToken(response.data.access_token)
-                setMessage(response.data.message)
+                setMessage(response.data)
                 localStorage.setItem('token', response.data.access_token);
-                console.log(localStorage.getItem('token'));
+                //set time out 1mins
+                window.setTimeout(() => {
+                    router.push('/');
+                }, 1000)
             };
           })
           .catch((error) => {
@@ -43,11 +45,13 @@ const Login = () => {
                  * The request was made and the server responded with a
                  * status code that falls out of the range of 2xx
                  */
+                console.log(error.response)
                 setMessage({
-                        email : error.response.data.email,
-                        password : error.response.data.password,
-                        totail: error.response.data.message
+                        // email : error.response.data.email,
+                        totail : error.response.data.message,
+                        success: error.response.data.success
                     });
+
             } else if (error.request) {
                 /*
                  * The request was made but no response was received, `error.request`
@@ -60,22 +64,6 @@ const Login = () => {
                 console.log('Error', error.message);
             }
           });
-    //     const response = await PostService.postLogin({
-    //             email: username,
-    //             password : password
-    //       }).then(response => {
-    //         if (response?.status === 200) {
-    //             console.log(response)
-    //             setloginTokent(response.data.access_token)
-    //             setMessage(response.data.message)
-    //         }
-            
-    //       })
-    //       .catch(
-    //           err =>console.log(err),
-    //           setMessage('Email hoặc mật khẩu không hợp lệ')
-    //     );
-    //     await router.push('/')
      }
      const get_user = async () =>{
         if(loginToken){
@@ -109,9 +97,11 @@ const Login = () => {
                 <p className={styles.err}>{message?.email}</p>
                 <label htmlFor="">* Password :</label><br />
                 <input onInput={ ( e ) => setPassword( e.target.value ) } type="password" id="password" value={ password } />
-                <p className={styles.err}>{message?.password}</p>
                 <input type="submit" value="Login" className={styles.btn}/>
                 <p className={styles.err}>{message?.totail}</p>
+                {message.success != null &&
+                   <p className={styles.sus}>{message?.success}</p>
+                }
                 <p>Không có tài khoản? <Link href="/auth/register">Đăng ký ngay</Link></p>
             </form>
         </div>

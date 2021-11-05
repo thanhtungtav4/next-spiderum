@@ -36,6 +36,10 @@ const Register = () => {
                 setMessage({
                     totail : response.data.success,
                 });
+                // redirect 1 second after doSomething() finishes.
+                window.setTimeout(() => {
+                    router.push('/auth/login');
+                }, 1000)
             };
           })
           .catch((error) => {

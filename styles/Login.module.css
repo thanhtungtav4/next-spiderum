@@ -48,4 +48,9 @@
 }
 .sus{
     color: seagreen;
+    padding: 15px;
+    background-color: aliceblue;
+    width: 323px;
+    font-weight: 600;
+    border-radius: 3px;
 }
