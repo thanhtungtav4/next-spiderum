@@ -4,6 +4,7 @@ import Link from 'next/link';
 import HeadMeta from "../module/HeadMeta";
 import MenuTopBottom from "../module/MenuTop";
 import DarkMode from "../module/DarkMode";
+import UserAuth from "../module/UserAuth";
 
 
 class Header extends React.Component {
@@ -25,6 +26,7 @@ class Header extends React.Component {
             <ul className="c-header__icon">
               <li><i className="gg-search" /></li>
               <li><i className="gg-mail" /></li>
+              <UserAuth/>
               <DarkMode/>
             </ul>
           </div>

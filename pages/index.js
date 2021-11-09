@@ -3,8 +3,11 @@ import React, {useState, useEffect} from 'react'
 import SectionPostHost from '../components/module/Item/SectionPostHost';
 import SectionPostRowSlider from '../components/module/Item/SectionPostRowSlider';
 import SectionLayoutTab from '../components/module/Item/SectionLayoutTab';
+import { useContext } from "react";
+//import { AuthContext } from "../services/AuthProvider";
 
 function Home({postData}) {
+  //const { status, user } = useContext(AuthContext);
   return ( 
       <>
         <h2 className="m-ttl2">Đừng bỏ lỡ </h2>
