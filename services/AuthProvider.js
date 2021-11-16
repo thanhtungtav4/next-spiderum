@@ -19,21 +19,34 @@ const AuthProvider = ({ children }) => {
               if (dataUser?.status === 200) {
                  // console.log(dataUser.data);
                  setUserDetails(dataUser.data);
-                 setLoggedIn(true)
+                 setLoggedIn(true);
               }
             })
             .catch(
               err =>console.log(err),
+              // err =>setLoggedIn(false),
+              // err => localStorage.removeItem('token'),
           );
         }
         else{
-            setLoggedIn(false)
+            setLoggedIn(false),
+            localStorage.removeItem('token')
         }
-      }, []);
+      }, [token]);
+      const logout = value => {
+          setLoggedIn(false);
+          console.log('haha');
+      }
+      // const login = value => {
+      //   setLoggedIn(true);
+      // }
     const contextValue = {
         token,
         loggedIn,
         userDetails,
+        auth: {
+          logout,
+        }
     };
 
     return (

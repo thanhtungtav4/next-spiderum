@@ -7,12 +7,18 @@
  border-radius: 50%;
 }
 .btnLogin{
-  width: 100px !important;
+  width: 80px !important;
   background-color: #3398d4;
   color: white;
   border-radius: 5px;
   transition: all 0.3s;
 }
 .btnLogin:hover{
-  color: #3398d4;
+  color: white;
+  background-color: #3398d4;
+}
+.btnLogin a{
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
 }

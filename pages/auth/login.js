@@ -1,10 +1,11 @@
 
-import React, {SyntheticEvent, useState} from 'react';
+import React, {SyntheticEvent, useState, useContext} from 'react';
 import Head from "next/head";
 import {useRouter} from "next/router";
 import PostService from '../../services/post_service';
 import axios from 'axios';
 import Link from 'next/link';
+import { AuthContext } from "../../services/AuthProvider";
 import styles  from "../../styles/Login.module.css";
 
 const Login = () => {
@@ -15,6 +16,7 @@ const Login = () => {
         totail: null,
         success: null
     });
+    const {auth, loggedIn} = useContext(AuthContext);
     const router = useRouter();
 
     const handleSubmit = async ( e ) => {
@@ -32,7 +34,7 @@ const Login = () => {
                 setloginToken(response.data.access_token)
                 setMessage(response.data)
                 localStorage.setItem('token', response.data.access_token);
-                //set time out 1mins
+                auth.login();
                 window.setTimeout(() => {
                     router.push('/');
                 }, 1000)
