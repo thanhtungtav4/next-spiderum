@@ -9,3 +9,4 @@ https://vpilip.com/how-build-simple-pagination-in-nextjs/
 https://www.gary-lai.com/posts/2021-05-27-blog-with-nextjs-and-mdx-pagination
 https://www.youtube.com/watch?v=p4Hor5MfwI4
 https://ellismin.com/2020/05/next-pagination/
+https://www.linkedin.com/pulse/react-context-api-nextjs-axel-laurent-obscura-sarzotti

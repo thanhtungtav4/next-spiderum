@@ -757,7 +757,7 @@ form label {
     padding: 5px;
     background-color: var(--background);
     border-radius: 2px;
-    z-index: 10; }
+    z-index: 99; }
     @media screen and (max-width: 767px) {
       .m-auth__box {
         transform: translateX(-30%); } }

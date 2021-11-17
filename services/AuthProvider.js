@@ -34,18 +34,34 @@ const AuthProvider = ({ children }) => {
         }
       }, [token]);
       const logout = value => {
-          setLoggedIn(false);
-          console.log('haha');
+          if(token){
+            const header ={
+                "Authorization" : `Bearer ${token}`
+            } 
+            const Userlogout = axios.post(process.env.NEXT_PUBLIC_SHOP_URL + '/api/v1/user/logout', {
+                headers: header,
+              })
+              .then(function (Userlogout) {
+                if (Userlogout?.status === 200) {
+                   setLoggedIn(false);
+                   localStorage.removeItem('token');
+                }
+              })
+              .catch(
+                err =>console.log(err),
+            );
+          }
       }
-      // const login = value => {
-      //   setLoggedIn(true);
-      // }
+      const login = value => {
+        setLoggedIn(true);
+      }
     const contextValue = {
         token,
         loggedIn,
         userDetails,
         auth: {
           logout,
+          login
         }
     };
 
