@@ -2,6 +2,8 @@ import React, { useState, useEffect} from 'react';
 import Image from 'next/image';
 import {
   FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
 } from 'next-share';
 
 
@@ -67,7 +69,6 @@ function Sticky({data}) {
               <div className="m-sticky__share--item">
                 <FacebookShareButton
                   url={pageURL}
-                  quote={'next-share is a social share buttons for your next React apps.'} 
                 >
                   <i> 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" height={25} width={25}>
@@ -84,15 +85,29 @@ function Sticky({data}) {
                     </i>
                     </a>
                     </div>
-              <div className="m-sticky__share--item"><a href><i> 
+              <div className="m-sticky__share--item">
+              <TwitterShareButton
+                  url={pageURL}
+                >
+                  <i> 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" height={25} width={25}>
                       <path d="M444.63,150.2c.31,4.35.31,8.7.31,13.05C444.94,296,343.9,449,159.21,449A283.74,283.74,0,0,1,5,403.9a206,206,0,0,0,24.25,1.25,201.12,201.12,0,0,0,124.68-42.91A100.61,100.61,0,0,1,60,292.6a127,127,0,0,0,19,1.55,106.09,106.09,0,0,0,26.43-3.42A100.44,100.44,0,0,1,24.9,192.17v-1.24a101.13,101.13,0,0,0,45.39,12.74A100.57,100.57,0,0,1,39.2,69.36,285.48,285.48,0,0,0,246.27,174.45a113,113,0,0,1-2.49-23,100.52,100.52,0,0,1,173.8-68.71,197.74,197.74,0,0,0,63.74-24.25,100.15,100.15,0,0,1-44.15,55.34A201.2,201.2,0,0,0,495,98.27a216,216,0,0,1-50.37,51.93Z" fill="#55acee" />
-                    </svg></i></a></div>
-              <div className="m-sticky__share--item"><a href><i> 
+                    </svg>
+                  </i>
+                </TwitterShareButton>
+              </div>
+              <div className="m-sticky__share--item">
+              <LinkedinShareButton
+                  url={pageURL}
+                >
+                  <i> 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="25px" height="25px">
                       <path fill="#0288D1" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z" />
                       <path fill="#FFF" d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z" />
-                    </svg></i></a></div>
+                    </svg>
+                  </i>
+                </LinkedinShareButton>
+              </div>
             </div>
     </div>
   );
