@@ -70,7 +70,7 @@ const PostDetail = ({ posts }) => {
               </div>
             </div>
           </div>
-          <Sticky/>
+          <Sticky data={posts}/>
           {/* <div className="m-sticky">
             <div className="m-sticky__vote"> <a href="#">
                 <svg width={19} height={17} viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg">

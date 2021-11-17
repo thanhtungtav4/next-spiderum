@@ -8,7 +8,7 @@ import {
 
 
 function Sticky({data}) {
-  // Khai báo 1 biến trạng thái mới đặt tên là "count"
+  console.log(data);
   const [isActive, setActive] = useState("false");
   const [pageURL, setPageURL] = useState(0);
   const ToggleClass = () => {
@@ -51,9 +51,9 @@ function Sticky({data}) {
                   height="56px"
                   layout="responsive" 
                   itemProp="image" 
-                  src={data?.image ? process.env.NEXT_PUBLIC_REST_API + data?.image : process.env.NEXT_PUBLIC_APP_IMG} 
-                  blurDataURL={data?.image ? process.env.NEXT_PUBLIC_REST_API + data?.image : process.env.NEXT_PUBLIC_APP_IMG}
-                  alt={data?.name}
+                  src={data?.users?.image ? process.env.NEXT_PUBLIC_REST_API + data?.users?.image : process.env.NEXT_PUBLIC_APP_IMG}
+                  blurDataURL={data?.users?.image ? process.env.NEXT_PUBLIC_REST_API + data?.users?.image : process.env.NEXT_PUBLIC_APP_IMG}
+                  alt={data?.users?.name}
                 />
               </div>
               </a>
