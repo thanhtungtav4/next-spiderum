@@ -10,13 +10,15 @@ import styles  from "../../styles/Login.module.css";
 const Register = () => {
     const [ name, setName ] = useState('');
     const [ username, setUsername ] = useState('');
+    const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ loginToken, setloginToken] = useState('');
     const [message, setMessage] = useState({
-        name: ' ',
-        email: ' ',
-        password: ' ',
-        totail: ' ',
+        name: '',
+        username: '',
+        email: '',
+        password: '',
+        totail: '',
     });
     const router = useRouter();
 
@@ -25,7 +27,8 @@ const Register = () => {
         axios.defaults.withCredentials = true;
         const response = await axios.post(process.env.NEXT_PUBLIC_SHOP_URL + '/api/v1/user/register', {
             name: name,
-            email: username,
+            username: username,
+            email: email,
             password : password,
           }, { 
               withCredentials: true, 
@@ -47,6 +50,7 @@ const Register = () => {
             if (error.response) {
                 setMessage({
                         name : error.response.data.name,
+                        username : error.response.data.username,
                         email : error.response.data.email,
                         password : error.response.data.password
                     });
@@ -67,17 +71,25 @@ const Register = () => {
                 <br/>
                 <label htmlFor="">* Full name</label><br />
                 <input onInput={ ( e ) => setName( e.target.value ) }  type="text" id="name" value={ name } />
-                <p className={styles.err}>{message.name}</p>
-                <label htmlFor="">* Email</label><br />
-                <input onInput={ ( e ) => setUsername( e.target.value ) }  type="email" id="username" value={ username } />
-                <p className={styles.err}>{message.email}</p>
-                <label htmlFor="">* Password</label><br />
+                <p className={styles.err}>{message?.name}</p>
+                <br/>
+                <label htmlFor="">* Username</label>
+                <br/>
+                <input onInput={ ( e ) => setUsername( e.target.value ) }  type="text" id="username" value={ username } />
+                <p className={styles.err}>{message?.username}</p>
+                <label htmlFor="">* Email</label>
+                <br/>
+                <input onInput={ ( e ) => setEmail( e.target.value ) }  type="email" id="email" value={ email } />
+                <p className={styles.err}>{message?.email}</p>
+                <label htmlFor="">* Password</label>
+                <br/>
                 <input onInput={ ( e ) => setPassword( e.target.value ) } type="password" id="password" value={ password } />
-                <p className={styles.err}>{message.password}</p>
+                <p className={styles.err}>{message?.password}</p>
                 <input type="submit" value="Đăng Ký" className={styles.btn}/>
-                <p className={styles.sus}>{message.totail}</p>
-                <p>Bạn đã có tài khoản? <Link href="/auth/login">Đăng Nhập</Link></p>
-                
+                {message?.totail != 0 &&
+                   <p className={styles.sus}>{message?.totail}</p>
+                }
+                <p>Bạn đã có tài khoản? <Link href="/auth/login">Đăng Nhập</Link></p> 
             </form>
         </div>
     );
