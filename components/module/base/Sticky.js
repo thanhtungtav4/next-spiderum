@@ -8,7 +8,6 @@ import {
 
 
 function Sticky({data}) {
-  console.log(data);
   const [isActive, setActive] = useState("false");
   const [pageURL, setPageURL] = useState(0);
   const ToggleClass = () => {
