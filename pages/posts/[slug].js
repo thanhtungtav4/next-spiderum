@@ -15,12 +15,10 @@ const PostDetail = ({ posts }) => {
   useEffect(() => {
     function onScroll() {
       let pageHeight = document.documentElement.scrollHeight;
-      let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
-      if (pageHeight - currentPosition > 1200) {
-        // downscroll code
+      let currentPosition = window.pageYOffset; 
+      if (pageHeight - currentPosition > 1300) {
         setIsHide("");
       } else {
-        // upscroll code
         setIsHide("d-none");
       }
       setScrollTop(currentPosition <= 0 ? 0 : currentPosition);
