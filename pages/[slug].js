@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import Head from 'next/head'
 import HeadMeta from '../components/module/HeadMeta'
 import ReactPaginate from "react-paginate"
 import { useRouter } from "next/router"
@@ -26,6 +25,7 @@ export default function CategoryPage({categorys}) {
       <HeadMeta 
       title={categorys?.name}
       image={process.env.NEXT_PUBLIC_REST_API + categorys?.image}
+      url={process.env.NEXT_PUBLIC_SHOP_URL + "/" + categorys?.slug}
       />
       <section className="m-banner">
         <div className="m-banner__inner" style={{backgroundImage: "url(" + Background + ")"}} />

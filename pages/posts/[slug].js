@@ -1,11 +1,11 @@
 import React, { useState , useEffect} from 'react'
 import Link from 'next/link'
-import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Tags from '../../components/module/base/Tags'
-import ItemRow from '../../components/module/base/ItemRow';
-import Sticky from '../../components/module/base/Sticky';
+import ItemRow from '../../components/module/base/ItemRow'
+import Sticky from '../../components/module/base/Sticky'
+import HeadMeta from '../../components/module/HeadMeta'
 
 const PostDetail = ({ posts }) => {
   const router = useRouter()
@@ -29,19 +29,12 @@ const PostDetail = ({ posts }) => {
   }, [scrollTop]);
   return (
     <>
-        <Head>
-          <title>{posts?.title}</title>
-          <meta name="title" content={posts?.title}></meta>
-          <meta name="description" content={posts?.description}></meta>
-          <meta property="og:url" content={is_url ? is_url : process.env.NEXT_PUBLIC_SHOP_URL} />
-          <meta property="og:title" content={posts?.title} />
-          <meta property="og:description" content={posts?.description} />
-          <meta property="og:image" content={posts?.users?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.users?.image : process.env.NEXT_PUBLIC_APP_IMG} />
-          <meta property="twitter:url" content={is_url ? is_url : process.env.NEXT_PUBLIC_SHOP_URL} />
-          <meta property="twitter:title" content={posts?.title} />
-          <meta property="twitter:description" content={posts?.description} />
-          <meta property="twitter:image" content={posts?.users?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.users?.image : process.env.NEXT_PUBLIC_APP_IMG} />
-        </Head>
+      <HeadMeta 
+        title={posts?.title} 
+        image={process.env.NEXT_PUBLIC_REST_API + posts?.users?.image}
+        url={is_url}
+        description={posts?.description}
+        />
         <section className="m-content"> 
           <div className="m-content__inner">
             <div className="m-content__head"> 

@@ -1,7 +1,6 @@
 import React from "react";
 import Image from 'next/image';
 import Link from 'next/link';
-import HeadMeta from "../module/HeadMeta";
 import MenuTopBottom from "../module/MenuTop";
 import DarkMode from "../module/DarkMode";
 import UserAuth from "../module/UserAuth";
@@ -11,7 +10,6 @@ class Header extends React.Component {
   render() {
     return(
       <>
-      <HeadMeta/>
       <header className="c-header">
         <div className="c-header__inner">
           <div className="c-header__navTop">
