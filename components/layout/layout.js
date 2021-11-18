@@ -1,5 +1,3 @@
-import Head from 'next/head';
-import Image from 'next/image';
 import React from 'react';
 import Header from "./header";
 import Footer from "./footer";

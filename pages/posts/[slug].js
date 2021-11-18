@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState , useEffect} from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -9,7 +9,26 @@ import Sticky from '../../components/module/base/Sticky';
 
 const PostDetail = ({ posts }) => {
   const router = useRouter()
+  const [isHide, setIsHide] = useState("");
+  const [scrollTop, setScrollTop] = useState(0);
   const is_url = router.pathname;
+  useEffect(() => {
+    function onScroll() {
+      let pageHeight = document.documentElement.scrollHeight;
+      let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
+      if (pageHeight - currentPosition > 1200) {
+        // downscroll code
+        setIsHide("");
+      } else {
+        // upscroll code
+        setIsHide("d-none");
+      }
+      setScrollTop(currentPosition <= 0 ? 0 : currentPosition);
+    }
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
   return (
     <>
         <Head>
@@ -87,7 +106,9 @@ const PostDetail = ({ posts }) => {
               </div>
             </div>
           </div>
-          <Sticky data={posts}/>
+          <div className={`m-sticky ${isHide}`}>
+            <Sticky data={posts} />
+          </div>
         </section>
        
         <h2 className="m-ttl2">Bài viết nổi bật khác</h2>

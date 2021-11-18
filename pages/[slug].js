@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Head from 'next/head'
+import HeadMeta from '../components/module/HeadMeta'
 import ReactPaginate from "react-paginate"
 import { useRouter } from "next/router"
 import ItemVertical from '../components/module/base/ItemVertical'
@@ -22,16 +23,10 @@ export default function CategoryPage({categorys}) {
   }
   return(
       <>
-      <Head>
-          <title>{categorys?.name}</title>
-          <meta name="title" content={categorys?.name}></meta>
-          {/* <meta property="og:url" content={path ? path : process.env.NEXT_PUBLIC_SHOP_URL} /> */}
-          <meta property="og:title" content={categorys?.name} />
-          <meta property="og:image" content={categorys?.image ? process.env.NEXT_PUBLIC_REST_API + categorys?.image : process.env.NEXT_PUBLIC_APP_IMG} />
-          {/* <meta property="twitter:url" content={path ? path : process.env.NEXT_PUBLIC_SHOP_URL} /> */}
-          <meta property="twitter:title" content={categorys?.name} />
-          <meta property="twitter:image" content={categorys?.image ? process.env.NEXT_PUBLIC_REST_API + categorys?.image : process.env.NEXT_PUBLIC_APP_IMG} />
-        </Head>
+      <HeadMeta 
+      title={categorys?.name}
+      image={process.env.NEXT_PUBLIC_REST_API + categorys?.image}
+      />
       <section className="m-banner">
         <div className="m-banner__inner" style={{backgroundImage: "url(" + Background + ")"}} />
         <div className="m-banner__info">{categorys?.name} </div>

@@ -25,8 +25,8 @@ function Sticky({data}) {
     setPageURL(window.location.href);
   })
   return (
-    <div className="m-sticky">
-            <div className="m-sticky__vote"> 
+    <>
+       <div className="m-sticky__vote"> 
             <a href="#">
                 <svg width="19" height="17" viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.32031 3.98438L3.00781 12.5H13.6719L8.32031 3.98438ZM8.32031 0.820312L16.6797 14.1797H0L8.32031 0.820312Z"></path>
@@ -108,7 +108,7 @@ function Sticky({data}) {
                 </LinkedinShareButton>
               </div>
             </div>
-    </div>
+    </>
   );
 }
 export default Sticky;
