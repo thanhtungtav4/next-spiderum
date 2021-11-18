@@ -6,13 +6,18 @@ import Tags from '../../components/module/base/Tags'
 import ItemRow from '../../components/module/base/ItemRow'
 import Sticky from '../../components/module/base/Sticky'
 import HeadMeta from '../../components/module/HeadMeta'
+import {
+  FacebookShareButton,
+} from 'next-share';
+
 
 const PostDetail = ({ posts }) => {
   const router = useRouter()
   const [isHide, setIsHide] = useState("");
   const [scrollTop, setScrollTop] = useState(0);
-  const is_url = router.pathname;
+  const [pageURL, setPageURL] = useState(0);
   useEffect(() => {
+    setPageURL(window.location.href);
     function onScroll() {
       let pageHeight = document.documentElement.scrollHeight;
       let currentPosition = window.pageYOffset; 
@@ -32,7 +37,7 @@ const PostDetail = ({ posts }) => {
       <HeadMeta 
         title={posts?.title} 
         image={process.env.NEXT_PUBLIC_REST_API + posts?.users?.image}
-        url={is_url}
+        url={pageURL}
         description={posts?.description}
         />
         <section className="m-content"> 
@@ -90,10 +95,20 @@ const PostDetail = ({ posts }) => {
               )}
               <div className="m-tool">
                 <div className="m-tool__ntl"> <a> <i className="gg-shape-triangle" /><span> <strong>21</strong></span></a><a href><i className="gg-eye" /><span>21000</span></a></div>
-                <div className="m-tool__ntr"> <a><i> 
+                <div className="m-tool__ntr"> 
+                  <FacebookShareButton
+                    url={pageURL}
+                  >
+                    <i> 
                       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" height={25} width={25}>
                         <path className="cls-1" d="M475,251.36c0-124.29-100.71-225-225-225S25,127.07,25,251.36c0,112.3,82.28,205.39,189.84,222.28V316.4H157.69v-65h57.15V201.79c0-56.39,33.57-87.53,85-87.53,24.62,0,50.37,4.39,50.37,4.39V174H321.82c-27.95,0-36.66,17.35-36.66,35.14v42.23h62.4l-10,65H285.16V473.64C392.72,456.75,475,363.66,475,251.36Z" fill="#3b5999" />
-                      </svg></i></a><a><i className="gg-bookmark" /></a></div>
+                      </svg>
+                    </i>
+                    </FacebookShareButton>
+                  <a>
+                    <i className="gg-bookmark" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
