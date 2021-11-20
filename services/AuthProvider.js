@@ -49,6 +49,8 @@ const AuthProvider = ({ children }) => {
               })
               .catch(
                 err =>console.log(err),
+                   setLoggedIn(false),
+                   localStorage.removeItem('token'),
             );
           }
       }

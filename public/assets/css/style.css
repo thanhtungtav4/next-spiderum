@@ -291,14 +291,19 @@ form label {
   .c-header__btn {
     width: 216px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 10px;
     cursor: pointer;
+    align-items: center;
     transition: opacity 0.2s linear; }
     @media screen and (max-width: 767px) {
+      .c-header__btn {
+        margin-left: 0; } }
+    @media screen and (max-width: 767px) {
       .c-header__btn.m-onlysp {
-        display: flex; } }
+        display: flex;
+        justify-content: flex-end; } }
     .c-header__btn span {
       margin: 5px; }
     .c-header__btn.is_active .gg-chevron-down {
@@ -379,7 +384,8 @@ form label {
     .c-header__togge.is_active {
       opacity: 1;
       visibility: visible;
-      transition: .2s linear; }
+      transition: .2s linear;
+      position: static; }
     .c-header__togge a {
       text-decoration: none;
       font-size: 1.5rem;
@@ -639,7 +645,12 @@ form label {
     padding: 1rem 2rem;
     color: var(--color-black); }
   .widget-body {
-    padding: 2rem; }
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column; }
   .widget-item {
     display: flex;
     flex-wrap: wrap;
@@ -837,6 +848,11 @@ form label {
 
 .d-none {
   display: none; }
+
+.is_sticky {
+  height: fit-content;
+  position: sticky;
+  top: 20%; }
 
 /*------------------------------------------------------------
 	Icon
@@ -1575,3 +1591,54 @@ form label {
       text-transform: uppercase; }
     .m-tag li:hover a {
       background: #e2e8f0; }
+
+.c-banner__inner {
+  width: 100%;
+  height: 370px;
+  position: relative; }
+  .c-banner__inner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px; }
+    .c-banner__inner img:hover {
+      transform: none; }
+
+.widget__user {
+  margin-top: -200px;
+  background: var(--background);
+  height: fit-content;
+  position: sticky;
+  top: 20%;
+  z-index: 1; }
+  @media screen and (max-width: 767px) {
+    .widget__user.col-3 {
+      margin: -250px 20px 0;
+      position: static; } }
+
+.widget__avata {
+  width: 128px;
+  height: 128px;
+  position: relative;
+  align-items: center; }
+  .widget__avata img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; }
+
+.widget__name {
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin: 1rem 0 0.3rem; }
+
+.widget__username {
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem; }
