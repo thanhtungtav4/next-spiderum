@@ -41,6 +41,7 @@ function ItemRow({data}){
             </div>
             
             <div className="m-news__info">
+              <Link href={`/user/${encodeURIComponent(data?.users?.username)}`}>
                <a className="m-news__auth"> 
                 <div className="image__auth">
                 <Image 
@@ -60,6 +61,7 @@ function ItemRow({data}){
                   <div className="m-news__date">{data?.created_at}</div>
                 </div>
                 </a>
+              </Link>
               <div className="m-news__more"> 
                 <a>
                   <i className="gg-shape-triangle">

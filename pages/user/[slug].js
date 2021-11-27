@@ -52,8 +52,8 @@ export default function UserPage({datausers}) {
                         height="200px"
                         layout="responsive" 
                         itemProp="image" 
-                        src={datausers?.user?.banner ? process.env.NEXT_PUBLIC_REST_API + datausers?.user?.banner : process.env.NEXT_PUBLIC_APP_IMG} 
-                        blurDataURL={datausers?.user?.banner ? process.env.NEXT_PUBLIC_REST_API + datausers?.user?.banner : process.env.NEXT_PUBLIC_APP_IMG}
+                        src={datausers?.user?.image ? process.env.NEXT_PUBLIC_REST_API + datausers?.user?.image : process.env.NEXT_PUBLIC_APP_IMG} 
+                        blurDataURL={datausers?.user?.image ? process.env.NEXT_PUBLIC_REST_API + datausers?.user?.image : process.env.NEXT_PUBLIC_APP_IMG}
                         alt={datausers?.user?.name} />
                 </div>
                 <h1 className="widget__name">{datausers?.user?.name}</h1>

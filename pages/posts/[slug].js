@@ -49,22 +49,26 @@ const PostDetail = ({ posts }) => {
               <h1 className="m-content__ttl" itemProp="name"> {posts?.title}</h1>
               <p className="m-content__description">{posts?.description}</p>
               <div className="m-content__auth">
-              <div className="m-content__auth--img">
-                <Image 
-                  objectFit="cover"
-                  objectPosition="center"
-                  placeholder="blur" 
-                  width="56px"
-                  height="56px"
-                  layout="responsive" 
-                  itemProp="image" 
-                  src={posts?.users?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.users?.image : process.env.NEXT_PUBLIC_APP_IMG} 
-                  blurDataURL={posts?.users?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.users?.image : process.env.NEXT_PUBLIC_APP_IMG}
-                  alt={posts?.users?.name}
-                />
-                </div>
+              <Link href={`/user/${encodeURIComponent(posts?.users?.username)}`}>
+                <a className="m-content__auth--img">
+                  <Image 
+                    objectFit="cover"
+                    objectPosition="center"
+                    placeholder="blur" 
+                    width="56px"
+                    height="56px"
+                    layout="responsive" 
+                    itemProp="image" 
+                    src={posts?.users?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.users?.image : process.env.NEXT_PUBLIC_APP_IMG} 
+                    blurDataURL={posts?.users?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.users?.image : process.env.NEXT_PUBLIC_APP_IMG}
+                    alt={posts?.users?.name}
+                  />
+                </a>
+                </Link>
                 <div className="m-content__auth--name"> 
+                  <Link href={`/user/${encodeURIComponent(posts?.users?.username)}`}>
                   <a>{posts?.users?.name}</a>
+                  </Link>
                   <p> {posts?.created_at} </p>
                 </div>
               </div>
