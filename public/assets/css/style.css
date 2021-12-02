@@ -1568,9 +1568,12 @@ form label {
       display: flex;
       flex-wrap: wrap;
       text-decoration: none;
-      color: #666; }
+      color: #666;
+      align-items: center; }
       .m-tool__ntl > div span, .m-tool__ntr > div span {
         margin-left: 8px; }
+      .m-tool__ntl > div strong, .m-tool__ntr > div strong {
+        font-size: medium; }
     .m-tool__ntl .gg-bookmark, .m-tool__ntr .gg-bookmark {
       height: 23px;
       width: 17px; }

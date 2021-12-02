@@ -9,6 +9,7 @@ import Sticky from '../../components/module/base/Sticky'
 import HeadMeta from '../../components/module/HeadMeta'
 import { AuthContext } from "../../services/AuthProvider"
 import Bookmark from "../../components/module/base/Bookmark"
+import Heart from "../../components/module/base/Heart"
 import {
   FacebookShareButton,
 } from 'next-share';
@@ -103,12 +104,12 @@ const PostDetail = ({ posts }) => {
               )}
               <div className="m-tool">
                 <div className="m-tool__ntl">
-                <div> <i className="gg-shape-triangle" /><span> <strong>21</strong></span></div>
+                <Heart data={posts?.id} reload={isHide}/> 
                 <div><i className="gg-eye" /><span>21000</span></div></div>
                 <div className="m-tool__ntr"> 
                     <div className="align-items-end">
                       <FacebookShareButton url={pageURL}>
-                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" height={26} width={26}>
+                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" height={28} width={28}>
                           <path className="cls-1" d="M475,251.36c0-124.29-100.71-225-225-225S25,127.07,25,251.36c0,112.3,82.28,205.39,189.84,222.28V316.4H157.69v-65h57.15V201.79c0-56.39,33.57-87.53,85-87.53,24.62,0,50.37,4.39,50.37,4.39V174H321.82c-27.95,0-36.66,17.35-36.66,35.14v42.23h62.4l-10,65H285.16V473.64C392.72,456.75,475,363.66,475,251.36Z" fill="#3b5999" />
                         </svg>
                       </FacebookShareButton>
