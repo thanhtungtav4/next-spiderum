@@ -710,7 +710,9 @@ form label {
     flex-wrap: wrap;
     row-gap: 12px;
     flex-direction: column;
-    text-align: center; }
+    text-align: center;
+    justify-content: center;
+    align-items: center; }
   .m-sticky__share {
     opacity: 0;
     margin: 20px 0;
@@ -738,7 +740,8 @@ form label {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    cursor: pointer; }
+    cursor: pointer;
+    justify-content: center; }
 
 .m-pagination {
   display: flex;
@@ -1558,13 +1561,13 @@ form label {
   .m-tool__ntl, .m-tool__ntr {
     display: flex;
     flex-wrap: wrap; }
-    .m-tool__ntl a, .m-tool__ntr a {
+    .m-tool__ntl > div, .m-tool__ntr > div {
       margin: 0 8px;
       display: flex;
       flex-wrap: wrap;
       text-decoration: none;
       color: #666; }
-      .m-tool__ntl a span, .m-tool__ntr a span {
+      .m-tool__ntl > div span, .m-tool__ntr > div span {
         margin-left: 8px; }
     .m-tool__ntl .gg-bookmark, .m-tool__ntr .gg-bookmark {
       height: 23px;
@@ -1574,6 +1577,8 @@ form label {
         height: 11px;
         top: 14px;
         left: -1px; }
+  .m-tool .align-items-end {
+    align-items: flex-end; }
 
 .m-tag {
   display: flex;
@@ -1643,3 +1648,4 @@ form label {
   font-weight: 500;
   font-size: 1.6rem;
   margin-bottom: 0.8rem; }
+

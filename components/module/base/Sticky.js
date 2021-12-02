@@ -23,24 +23,12 @@ function Sticky({data}) {
   }
   useEffect(() => {
     setPageURL(window.location.href);
-  })
+  },[data])
   return (
     <>
        <div className="m-sticky__vote"> 
-            <a href="#">
-                <svg width="19" height="17" viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.32031 3.98438L3.00781 12.5H13.6719L8.32031 3.98438ZM8.32031 0.820312L16.6797 14.1797H0L8.32031 0.820312Z"></path>
-                </svg>
-            </a>
-              <div className="m-sticky__count">88</div>
-            <a>
-                <svg width={19} height={17} viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8.67969 11.0156L13.9922 2.5L3.32812 2.5L8.67969 11.0156ZM8.67969 14.1797L0.320311 0.820314L17 0.820312L8.67969 14.1797Z" />
-                </svg>
-            </a>
             </div>
             <div className="m-sticky__auth"> 
-              <a>
               <div className="m-sticky__auth--img"> 
               <Image 
                   objectFit="cover"
@@ -55,14 +43,16 @@ function Sticky({data}) {
                   alt={data?.users?.name}
                 />
               </div>
-              </a>
             </div>
-            <div className="m-sticky__post"><a href><i className="gg-bookmark" /></a>
-              <div className="m-sticky__cmn"><a href>
+            <div className="m-sticky__post">
+              <div className="m-sticky__cmn">
                   <svg width={18} height={19} viewBox="0 0 18 19" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15.75 0.25H2.25C0.984375 0.25 0 1.26953 0 2.5V12.625C0 13.8906 0.984375 14.875 2.25 14.875H5.625V17.8281C5.625 18.1094 5.80078 18.25 6.04688 18.25C6.11719 18.25 6.1875 18.25 6.29297 18.1797L10.6875 14.875H15.75C16.9805 14.875 18 13.8906 18 12.625V2.5C18 1.26953 16.9805 0.25 15.75 0.25ZM16.3125 12.625C16.3125 12.9414 16.0312 13.1875 15.75 13.1875H10.125L9.66797 13.5391L7.3125 15.2969V13.1875H2.25C1.93359 13.1875 1.6875 12.9414 1.6875 12.625V2.5C1.6875 2.21875 1.93359 1.9375 2.25 1.9375H15.75C16.0312 1.9375 16.3125 2.21875 16.3125 2.5V12.625Z" />
-                  </svg></a></div>
-              <div id="btn_share" onClick={ToggleClass}><i className="gg-share" /></div>
+                  </svg>
+              </div>
+              <div id="btn_share" onClick={ToggleClass}>
+                <i className="gg-share" />
+              </div>
             </div>
             <div className={isActive ? "m-sticky__share" : "m-sticky__share is_active"} id="toggle_share" >
               <div className="m-sticky__share--item">

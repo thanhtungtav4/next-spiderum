@@ -28,8 +28,9 @@ function UserAuth() {
               alt={userDetails?.name}
             />
           </div>
-        <div className={`m-auth__box ${isauth}`}> 
-        <a className="m-auth__user"> 
+        <div className={`m-auth__box ${isauth}`}>
+        <Link className="m-auth__user" href={`/user/${encodeURIComponent(userDetails?.username)}`}> 
+          <a> 
             <div className="m-auth__img">
               <Image 
                 objectFit="cover"
@@ -47,7 +48,10 @@ function UserAuth() {
             <div className="m-auth__content"> 
               <p className="displayname">{userDetails?.name}</p>
               <p className="username">{userDetails?.email}</p>
-            </div></a><a className="m-auth__list" href> 
+            </div>
+          </a>
+        </Link>
+            <a className="m-auth__list" href> 
             <svg id="Layer_1" _ngcontent-serverapp-c42 data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" height={18} width={18}>
               <path className="cls-1" _ngcontent-serverapp-c42 d="M109.38,62.5A47.11,47.11,0,0,0,62.5,109.38V390.63a47.11,47.11,0,0,0,46.88,46.87H307.29a15.62,15.62,0,0,0,11-4.58l.16-.16L432.92,318.34a15.62,15.62,0,0,0,4.58-11V109.38A47.11,47.11,0,0,0,390.63,62.5Zm0,31.25H390.63a15.39,15.39,0,0,1,15.62,15.63V291.67H338.54a47.11,47.11,0,0,0-46.87,46.87v67.71H109.38a15.39,15.39,0,0,1-15.63-15.62V109.38A15.4,15.4,0,0,1,109.38,93.75Zm52.08,52.06a15.63,15.63,0,1,0-.44,31.25H338.54a15.63,15.63,0,1,0,.44-31.25H161.46Zm0,72.92A15.63,15.63,0,1,0,161,250H296.88a15.63,15.63,0,0,0,.44-31.25H161.46ZM338.54,322.92h45.62l-61.24,61.24V338.54A15.38,15.38,0,0,1,338.54,322.92Z" />
             </svg><span>Bài viết của bạn </span></a>

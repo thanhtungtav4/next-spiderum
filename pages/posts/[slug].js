@@ -1,22 +1,26 @@
-import React, { useState , useEffect} from 'react'
+import React, { useState , useEffect, useContext} from 'react'
 import Link from 'next/link'
+import axios from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Tags from '../../components/module/base/Tags'
 import ItemRow from '../../components/module/base/ItemRow'
 import Sticky from '../../components/module/base/Sticky'
 import HeadMeta from '../../components/module/HeadMeta'
+import { AuthContext } from "../../services/AuthProvider"
+import Bookmark from "../../components/module/base/Bookmark"
 import {
   FacebookShareButton,
 } from 'next-share';
 
 
 const PostDetail = ({ posts }) => {
+  const {loggedIn, userDetails, token, auth} = useContext(AuthContext);
   const router = useRouter()
   const [isHide, setIsHide] = useState("");
   const [scrollTop, setScrollTop] = useState(0);
   const [pageURL, setPageURL] = useState(0);
-  useEffect(() => {
+  useEffect(async () => {
     setPageURL(window.location.href);
     function onScroll() {
       let pageHeight = document.documentElement.scrollHeight;
@@ -28,10 +32,10 @@ const PostDetail = ({ posts }) => {
       }
       setScrollTop(currentPosition <= 0 ? 0 : currentPosition);
     }
-
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollTop]);
+
   return (
     <>
       <HeadMeta 
@@ -98,26 +102,24 @@ const PostDetail = ({ posts }) => {
                 </>
               )}
               <div className="m-tool">
-                <div className="m-tool__ntl"> <a> <i className="gg-shape-triangle" /><span> <strong>21</strong></span></a><a href><i className="gg-eye" /><span>21000</span></a></div>
+                <div className="m-tool__ntl">
+                <div> <i className="gg-shape-triangle" /><span> <strong>21</strong></span></div>
+                <div><i className="gg-eye" /><span>21000</span></div></div>
                 <div className="m-tool__ntr"> 
-                  <FacebookShareButton
-                    url={pageURL}
-                  >
-                    <i> 
-                      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" height={25} width={25}>
-                        <path className="cls-1" d="M475,251.36c0-124.29-100.71-225-225-225S25,127.07,25,251.36c0,112.3,82.28,205.39,189.84,222.28V316.4H157.69v-65h57.15V201.79c0-56.39,33.57-87.53,85-87.53,24.62,0,50.37,4.39,50.37,4.39V174H321.82c-27.95,0-36.66,17.35-36.66,35.14v42.23h62.4l-10,65H285.16V473.64C392.72,456.75,475,363.66,475,251.36Z" fill="#3b5999" />
-                      </svg>
-                    </i>
-                    </FacebookShareButton>
-                  <a>
-                    <i className="gg-bookmark" />
-                  </a>
+                    <div className="align-items-end">
+                      <FacebookShareButton url={pageURL}>
+                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" height={26} width={26}>
+                          <path className="cls-1" d="M475,251.36c0-124.29-100.71-225-225-225S25,127.07,25,251.36c0,112.3,82.28,205.39,189.84,222.28V316.4H157.69v-65h57.15V201.79c0-56.39,33.57-87.53,85-87.53,24.62,0,50.37,4.39,50.37,4.39V174H321.82c-27.95,0-36.66,17.35-36.66,35.14v42.23h62.4l-10,65H285.16V473.64C392.72,456.75,475,363.66,475,251.36Z" fill="#3b5999" />
+                        </svg>
+                      </FacebookShareButton>
+                    </div>
+                    <Bookmark data={posts?.id} reload={isHide}/> 
                 </div>
               </div>
             </div>
           </div>
           <div className={`m-sticky ${isHide}`}>
-            <Sticky data={posts} />
+            <Sticky data={posts}/>
           </div>
         </section>
        
@@ -138,38 +140,28 @@ const PostDetail = ({ posts }) => {
   )
 }
 
-export async function getStaticPaths() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/post/`)
-  const posts = await res.json()
-  const paths = posts.data.map((post) => ({
-   params: { slug: post.slug.toString()},
- }))
- return { paths, fallback: true }
-}
-
-export async function getStaticProps({ params }) {
-  try {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/post/${params.slug}`)
-  const posts = await res.json()
-  if (Object.keys(posts).length != 0 ) {
-    return {
-      props: { posts}, // will be passed to the page component as props
-      revalidate: 5,
+export const getServerSideProps = async (context) => {
+  try {  
+    const {params, query} = context
+    const data = await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/post/${params.slug}`)
+    const posts = await data.json();
+    if (Object.keys(posts).length != 0 ) {
+      return {
+        props: { 
+          posts,
+        }, // will be passed to the page component as props
+      }
     }
-  }
-  else{
-    return {
-      notFound: true,
+    else{
+      return {
+        notFound: true,
+      }
     }
-  }
-  } catch (error) {
-    return {
-      notFound: true,
+    } catch (error) {
+      return {
+        notFound: true,
+      }
     }
-  }
-  
-}
-
-
+};
 
 export default PostDetail

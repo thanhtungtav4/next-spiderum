@@ -13,7 +13,9 @@ const Login = () => {
     const [ password, setPassword ] = useState('');
     const [ loginToken, setloginToken] = useState('');
     const [message, setMessage] = useState({
-        totail: null,
+        Notipassword: null,
+        Notiemail: null,
+        Notimessage: null,
         success: null
     });
     const {auth, loggedIn} = useContext(AuthContext);
@@ -47,10 +49,11 @@ const Login = () => {
                  * The request was made and the server responded with a
                  * status code that falls out of the range of 2xx
                  */
-                console.log(error.response)
+                console.log(error.response.data)
                 setMessage({
-                        // email : error.response.data.email,
-                        totail : error.response.data.message,
+                        Notipassword : error.response.data.password,
+                        Notiemail : error.response.data.email,
+                        Notimessage: error.response.data.message,
                         success: error.response.data.success
                     });
 
@@ -100,7 +103,11 @@ const Login = () => {
                 <label htmlFor="">* Password :</label><br />
                 <input onInput={ ( e ) => setPassword( e.target.value ) } type="password" id="password" value={ password } />
                 <input type="submit" value="Login" className={styles.btn}/>
-                <p className={styles.err}>{message?.totail}</p>
+                <p className={styles.err}>
+                    {message?.Notiemail}
+                    {message?.Notipassword}
+                    {message?.Notimessage}
+                </p>
                 {message.success != null &&
                    <p className={styles.sus}>{message?.success}</p>
                 }
