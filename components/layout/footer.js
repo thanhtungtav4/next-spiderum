@@ -6,7 +6,7 @@ class Footer extends React.Component {
     return (
       <footer className="c-footer">
       <div className="c-footer__inner">
-        <div className="c-footer__logo"> <img src="assets/images/logo.png" alt="" /></div>
+        <div className="c-footer__logo"> <img src={process.env.NEXT_PUBLIC_SHOP_URL+`/assets/images/logo.png`} alt="" /></div>
         <ul className="c-footer__menu"> 
           <li> 
             <Link href="/">

@@ -40,9 +40,12 @@ function Bookmark({data, reload}) {
             if (dataToggle?.status == 200) {
                 setIsBookmark(dataToggle?.data);
             }
+            if (dataToggle?.status == 401) {
+                Router.push('/auth/login')  
+            }
         })
         .catch(
-            err =>console.log(err),
+            err =>console.log(err.status),
             err =>Router.push('/auth/login')  
         );
     }

@@ -13,7 +13,12 @@ export default function UserPage({datausers}) {
   const handlePagination = page => {
   const path = router.pathname
   const query = router.query
-  query.page = page.selected + 1
+  if(page.selected + 1 != 1){
+    query.page = page.selected + 1
+  }
+  else{
+    delete query.page
+  }
   router.push({
     pathname: path,
     query: query,

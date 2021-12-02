@@ -11,3 +11,4 @@ https://www.youtube.com/watch?v=p4Hor5MfwI4
 https://ellismin.com/2020/05/next-pagination/
 https://www.linkedin.com/pulse/react-context-api-nextjs-axel-laurent-obscura-sarzotti
 https://viblo.asia/p/sign-in-with-google-with-laravel-socialite-and-react-m68Z0V3d5kG
+https://www.arshakir.com/

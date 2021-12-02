@@ -17,15 +17,12 @@ const AuthProvider = ({ children }) => {
             })
             .then(function (dataUser) {
               if (dataUser?.status === 200) {
-                 // console.log(dataUser.data);
                  setUserDetails(dataUser.data);
                  setLoggedIn(true);
               }
             })
             .catch(
               err =>console.log(err),
-              // err =>setLoggedIn(false),
-              // err => localStorage.removeItem('token'),
           );
         }
         else{

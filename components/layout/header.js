@@ -5,7 +5,6 @@ import MenuTopBottom from "../module/MenuTop";
 import DarkMode from "../module/DarkMode";
 import UserAuth from "../module/UserAuth";
 
-
 class Header extends React.Component {
   render() {
     return(
@@ -16,8 +15,8 @@ class Header extends React.Component {
             <div className="c-header__logo">
               <Link href="/">
               <a className="c-header__img" >
-                <img className="m-onlypc" src="/assets/images/logo.png" alt="logo alt" />
-                <img className="m-onlysp" src="/assets/images/logosp.png" alt="logo alt" />
+                <img className="m-onlypc" src={process.env.NEXT_PUBLIC_SHOP_URL+`/assets/images/logo.png`} alt="logo alt" />
+                <img className="m-onlysp" src={process.env.NEXT_PUBLIC_SHOP_URL+`/assets/images/logosp.png`} alt="logo alt" />
               </a>
               </Link>
             </div>
