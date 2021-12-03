@@ -105,7 +105,8 @@ const PostDetail = ({ posts }) => {
               <div className="m-tool">
                 <div className="m-tool__ntl">
                 <Heart data={posts?.id} reload={isHide}/> 
-                <div><i className="gg-eye" /><span>21000</span></div></div>
+                <Bookmark data={posts?.id} reload={isHide}/> 
+                </div>
                 <div className="m-tool__ntr"> 
                     <div className="align-items-end">
                       <FacebookShareButton url={pageURL}>
@@ -114,7 +115,6 @@ const PostDetail = ({ posts }) => {
                         </svg>
                       </FacebookShareButton>
                     </div>
-                    <Bookmark data={posts?.id} reload={isHide}/> 
                 </div>
               </div>
             </div>
