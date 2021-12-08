@@ -37,10 +37,7 @@ function ItemRow({data}){
                 <a className="m-news__ext">{data?.description}
                 </a>
               </Link>
-              
-            </div>
-            
-            <div className="m-news__info">
+              <div className="m-news__info">
               <Link href={`/user/${encodeURIComponent(data?.users?.username)}`}>
                <a className="m-news__auth"> 
                 <div className="image__auth">
@@ -76,6 +73,7 @@ function ItemRow({data}){
                   <span>21</span>
                 </a>
               </div>
+            </div>
             </div>
           </article>
     );

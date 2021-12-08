@@ -21,8 +21,12 @@ class Header extends React.Component {
               </Link>
             </div>
             <ul className="c-header__icon">
-              <li><i className="gg-search" /></li>
+              <Link href="/search">
+                <li><i className="gg-search" /></li>
+              </Link>
+              <Link  href="mailto:nguyenthanhtung74119@gmail.com">
               <li><i className="gg-mail" /></li>
+              </Link>
               <UserAuth/>
               <DarkMode/>
             </ul>

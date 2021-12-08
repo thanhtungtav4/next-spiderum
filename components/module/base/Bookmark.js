@@ -23,6 +23,7 @@ function Bookmark({data, reload}) {
             })
             .catch(
                 err =>console.log(err),
+                //err =>Router.push('/auth/login')
             );
         }
       }, [reload]);
@@ -45,9 +46,12 @@ function Bookmark({data, reload}) {
             }
         })
         .catch(
-            err =>console.log(err.status),
-            err =>Router.push('/auth/login')  
+           // err =>console.log(err.status),
+            err =>Router.push('/auth/login')
         );
+    }
+    else{
+        Router.push('/auth/login');
     }
   }
 

@@ -48,9 +48,12 @@ function Heart({data, reload}) {
             }
         })
         .catch(
-            err =>console.log(err.status),
+           // err =>console.log(err.status),
             err =>Router.push('/auth/login')  
         );
+    }
+    else{
+        Router.push('/auth/login');
     }
   }
 
