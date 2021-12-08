@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import PostService from '../services/post_service'
 import ItemRow from '../components/module/base/ItemRow'
 import style from '../styles/search.module.css'
+import { render } from 'react-dom';
 
 function Search() {
   const [ svalue, setSvalue ] = useState('');
   const [posts, setPosts] = useState([]);
   const [Loading, setLoading] = useState(true);
-
   const handleSearch = async ( e ) => {
     e.preventDefault();
     const response = await PostService.getPost({
@@ -33,16 +32,18 @@ function Search() {
       <div className={`col-9 ${style.mxauto}`} >
           <div className="m-news is_vertical">
           <>
-            {posts.length > 0  && Loading == false > 0 ? (
-                  posts.map((dataPost, index) => (
-                  <ItemRow key={index} data={dataPost}/>
-                ))
-              ) : (
-              <p>Không có dữ liệu</p>
+           {posts.length > 0  && Loading == false > 0  ? (
+                posts.map((dataPost, index) => (
+                <ItemRow key={index} data={dataPost}/>
+              ))
+            ) : posts.length <= 0  && Loading == true ? (
+              <p className={style.mxauto}>Nhập nội dung tìm kiếm :)</p>
+            ) : (
+             <p className={style.mxauto}>Không tìm thấy dữ liệu...</p>
             )}
           </>
           </div>
-        </div>
+      </div>
     </div>
   );
 }
