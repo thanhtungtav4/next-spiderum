@@ -89,7 +89,7 @@ const PostDetail = ({ posts }) => {
                      src={posts?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.image : process.env.NEXT_PUBLIC_APP_IMG} 
                      blurDataURL={posts?.image ? process.env.NEXT_PUBLIC_REST_API + posts?.image : process.env.NEXT_PUBLIC_APP_IMG}
                      alt={posts?.title} />
-              </div>
+            </div>
             <div className="m-content__body" dangerouslySetInnerHTML={{
                 __html: posts?.content
               }}>

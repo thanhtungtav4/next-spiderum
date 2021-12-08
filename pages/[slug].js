@@ -3,6 +3,7 @@ import HeadMeta from '../components/module/HeadMeta'
 import ReactPaginate from "react-paginate"
 import { useRouter } from "next/router"
 import ItemVertical from '../components/module/base/ItemVertical'
+import SectionWedget from '../components/module/Item/SectionWedget'
 
 export default function CategoryPage({categorys}) {
   const router = useRouter();
@@ -43,65 +44,31 @@ export default function CategoryPage({categorys}) {
             <h2 className="m-ttl2">DÀNH CHO BẠN</h2>
           </div>
           <div className="m-news is_vertical">
-            {
-              categorys.postByCategory?.data.map((post, index) => (
-                <ItemVertical key={index} data={post}/>
-              ))
-            }
-            <ReactPaginate
-              containerClassName={'m-pagination w-100'}
-              activeClassName={'is_active'}
-              marginPagesDisplayed={1}
-              pageRangeDisplayed={3}
-              initialPage={categorys?.postByCategory?.current_page - 1}
-              pageCount={categorys?.postByCategory.last_page}
-              onPageChange={handlePagination}
-            />
+            {categorys.postByCategory?.data.length > 0   ? (
+                categorys.postByCategory?.data.map((post, index) => (
+                  <ItemVertical key={index} data={post}/>
+                ))
+            ) : (
+             <p>Không có dữ liệu...</p>
+            )}
+            {categorys.postByCategory?.data.length > 0   ? (
+                <ReactPaginate
+                containerClassName={'m-pagination w-100'}
+                activeClassName={'is_active'}
+                marginPagesDisplayed={1}
+                showPaginationBottom={false}
+                pageRangeDisplayed={3}
+                initialPage={categorys?.postByCategory?.current_page - 1}
+                pageCount={categorys?.postByCategory.last_page}
+                onPageChange={handlePagination}
+              />
+            ) : (
+             <></>
+            )}
           </div>
         </div>
         <div className="col-3">     
-          <div className="widget">
-            <div className="widget-head"> CÓ THỂ BẠN QUAN TÂM</div>
-            <div className="widget-body"> 
-              <article className="widget-item"> 
-                <div className="widget-item__img"> <a  rel="noreferrer"><img itemProp="image" src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/bb475710ff8811e8bd9deb350c986d59.jpg" alt="alt" /></a></div>
-                <div className="widget-item__content"> <a > 
-                    <h2 itemProp="name">CHÚNG TA ĐANG YÊU, HAY CHỈ ĐANG ĐEM LÒNG ÁI MỘ?</h2></a>
-                  <div className="widget-item__author"><a className="m-author" >a lost star </a><span>14 tháng 12 2018</span></div>
-                </div>
-              </article>
-              <article className="widget-item"> 
-                <div className="widget-item__img"> <a  rel="noreferrer"><img itemProp="image" src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/bb475710ff8811e8bd9deb350c986d59.jpg" alt="alt" /></a></div>
-                <div className="widget-item__content"> <a > 
-                    <h2 itemProp="name">CHÚNG TA ĐANG YÊU, HAY CHỈ ĐANG ĐEM LÒNG ÁI MỘ?</h2></a>
-                  <div className="widget-item__author"><a className="m-author" >a lost star </a><span>14 tháng 12 2018</span></div>
-                </div>
-              </article>
-              <article className="widget-item"> 
-                <div className="widget-item__img"> <a  rel="noreferrer"><img itemProp="image" src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/bb475710ff8811e8bd9deb350c986d59.jpg" alt="alt" /></a></div>
-                <div className="widget-item__content"> <a > 
-                    <h2 itemProp="name">CHÚNG TA ĐANG YÊU, HAY CHỈ ĐANG ĐEM LÒNG ÁI MỘ?</h2></a>
-                  <div className="widget-item__author"><a className="m-author" >a lost star </a><span>14 tháng 12 2018</span></div>
-                </div>
-              </article>
-              <article className="widget-item"> 
-                <div className="widget-item__img"> <a  rel="noreferrer"><img itemProp="image" src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/bb475710ff8811e8bd9deb350c986d59.jpg" alt="alt" /></a></div>
-                <div className="widget-item__content"> <a > 
-                    <h2 itemProp="name">CHÚNG TA ĐANG YÊU, HAY CHỈ ĐANG ĐEM LÒNG ÁI MỘ?</h2></a>
-                  <div className="widget-item__author"><a className="m-author" >a lost star </a><span>14 tháng 12 2018</span></div>
-                </div>
-              </article>
-              <article className="widget-item"> 
-                <div className="widget-item__img"> <a  rel="noreferrer"><img itemProp="image" src="https://s3-ap-southeast-1.amazonaws.com/images.spiderum.com/sp-xs-avatar/bb475710ff8811e8bd9deb350c986d59.jpg" alt="alt" /></a></div>
-                <div className="widget-item__content"> <a > 
-                    <h2 itemProp="name">CHÚNG TA ĐANG YÊU, HAY CHỈ ĐANG ĐEM LÒNG ÁI MỘ?</h2></a>
-                  <div className="widget-item__author">
-                  <a className="m-author" >a lost star </a>
-                  <span>14 tháng 12 2018</span></div>
-                </div>
-              </article>
-            </div>
-          </div>
+          <SectionWedget/>
         </div>
       </div>
       </>
