@@ -156,7 +156,11 @@ q {
 
 :focus {
   outline: 0; }
-
+video{
+  width: 100%;
+  height: auto;
+  display: block;
+}
 ins {
   text-decoration: none; }
 
@@ -1633,3 +1637,6 @@ form label {
   font-weight: 500;
   font-size: 1.6rem;
   margin-bottom: 0.8rem; }
+.pl_0{
+    padding-left: 0;
+  }

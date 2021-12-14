@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Example() {
+function Like() {
   // Khai báo 1 biến trạng thái mới đặt tên là "count"
   const [count, setCount] = useState(0);
 
@@ -13,4 +13,4 @@ function Example() {
     </div>
   );
 }
-export default Example;
+export default Like;
