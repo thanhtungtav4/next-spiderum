@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useContext } from "react"
 import Image from 'next/image'
 import Router from 'next/router'

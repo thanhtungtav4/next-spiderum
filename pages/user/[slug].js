@@ -69,7 +69,7 @@ export default function UserPage({datausers}) {
           </div>
           <div className="col-9">
             <div className="tab"> 
-              <h2 className="m-ttl2">Bài Viết Mới Nhất</h2>
+              <h2 className="m-ttl2">Bài Viết Của Bạn</h2>
             </div>
             <div className="m-news is_vertical">
               {

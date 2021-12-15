@@ -12,7 +12,8 @@ import {PlaceholderItemRow, PlaceholderItemVertical} from '../base/PlaceholderIt
     useEffect(async () =>{
       const response = await PostService.getPost({
         cursorPaginate: 1,
-        numPaginate: 3
+        numPaginate: 3,
+        featured: 1
       }).then(res => {
         if (res?.status === 200) {
           setPosts(res.data.data);
