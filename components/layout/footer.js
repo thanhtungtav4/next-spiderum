@@ -9,25 +9,16 @@ class Footer extends React.Component {
         <div className="c-footer__logo"> <img src={process.env.NEXT_PUBLIC_SHOP_URL+`/assets/images/logo.png`} alt="" /></div>
         <ul className="c-footer__menu"> 
           <li> 
-            <Link href="/">
-            <a>Về Spiderum</a>
+            <Link href="/security">
+              <a>Điều khoản bảo mật</a>
             </Link>
           </li>
           <li> 
-            <Link href="/">
-              <a>Chuyên mục            </a>
-            </Link>
-          </li>
-          <li> 
-            <Link href="/">
+            <Link href="/privacy-policy">
              <a>Điều khoản sử dụng</a>
             </Link>
           </li>
-          <li> 
-            <Link  href="https://huongluafood.com/">
-              <a>Đặc sản miền tây</a>
-            </Link>
-          </li>
+          
         </ul>
       </div>
       <div className="c-footer__bottom"> 
