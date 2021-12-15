@@ -23,13 +23,13 @@ class Footer extends React.Component {
       </div>
       <div className="c-footer__bottom"> 
         <div className="c-footer__info"> 
-          <p><strong>  Công ty Cổ Phần Felizz   </strong></p>
+          <p><strong>  Công ty Cổ Phần Demo</strong></p>
           <p> Trực thuộc Công ty Cổ Phần Spiderum Việt Nam (Spiderum Vietnam JSC)</p>
           <p> Người chịu trách nhiệm nội dung: Trần Việt Anh</p>
           <p> Giấy phép MXH số 341/GP-TTTT do Bộ TTTT cấp ngày 27 tháng 6 năm 2016</p>
         </div>
         <div className="c-footer__name"> 
-          <p> <strong> © 2021 Công ty Cổ phần Felizz</strong></p>
+          <p> <strong> © 2021 Công ty Cổ phần Demo</strong></p>
         </div>
       </div>
       <ScrollToTopBtn/>
