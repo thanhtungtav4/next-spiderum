@@ -11,6 +11,8 @@ function Crawler() {
   const [is_Categorys, setIs_Categorys] = useState([]);
   const [Status, setStatus] = useState([]);
   const [Loading, setLoading] = useState(true);
+  const [is_ERR, setIs_ERR] = useState(false);
+  const [is_save, setIs_save] = useState('');
   useEffect(async () =>{
     const response = await PostService.getCategory({
     }).then(res => {
@@ -38,14 +40,19 @@ function Crawler() {
 
     }).then(res => {
       if (res?.status === 200) {
-        console.log(res);
+        setLoading(false),
+        setIs_save(res?.data)
       }
     })
-    .catch(err =>console.log(err));
+    .catch(
+      err => setIs_ERR(true)
+      // err =>console.log(err)
+    );
  }
   return (
     <div className="row">
       <div className={stylecraw.sCraw}>
+
         <select onChange={ ( e ) => handleChange( e ) } name="category" id="category">
           {
             Categorys.map((Category, index) => (
@@ -58,6 +65,7 @@ function Crawler() {
         <option value='DRAFT'>DRAFT</option>
         </select>
       </div>
+      <p className={stylecraw.sCraw}>Nhập URL Từ dantri.com.vn</p>
       <form onSubmit={ ( e ) => handleCrawler( e ) } method="post" className={style.search}>
         <input type="text" onInput={ ( e ) => seturl( e.target.value ) } placeholder="URL..." required />
         <button className="fa fa-search" type="submit" >
@@ -71,7 +79,23 @@ function Crawler() {
       </svg> 
         </button>
       </form>
+     <div>
+      <>
+        {is_ERR == true && Loading == true   &&
+          <h2>
+            Lỗi
+          </h2>
+        }
+        {is_ERR == false && Loading == false  && is_save != ''  &&
+          <h2>
+            Lấy Dữ Liệu Thành Công
+          </h2>
+        }
+        
+      </>
+      </div>
     </div>
+    
   );
 }
 export default Crawler;
