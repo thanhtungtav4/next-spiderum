@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function privacy() {
-  // Khai báo 1 biến trạng thái mới đặt tên là "count"
-  const [count, setCount] = useState(0);
-
   return (
     <div className="ladi-container"><div id="HEADLINE16" className="ladi-element"><h3 className="ladi-headline">1. NỘI DUNG THỎA THUẬN CUNG CẤP VÀ SỬ DỤNG DỊCH VỤ MẠNG XÃ HỘI TRÊN WEBSITE WWW.SPIDERUM.COM VÀ WWW.SPIDERUM.VN
             <br /><br /></h3></div><div id="PARAGRAPH17" className="ladi-element"><p className="ladi-paragraph">Spiderum nghiêm cấm tuyệt đối người sử dụng chia sẻ, đăng tải, bàn luận hay có bất cứ hành vi nào nhằm mục đích:

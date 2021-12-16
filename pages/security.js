@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function security() {
-  // Khai báo 1 biến trạng thái mới đặt tên là "count"
-  const [count, setCount] = useState(0);
-
   return (
     <div className="col-inner">
         <h2>Bình luận</h2>
