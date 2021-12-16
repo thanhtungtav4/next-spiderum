@@ -1,6 +1,6 @@
 import React from 'react';
 
-function privacy() {
+function Privacy() {
   return (
     <div className="ladi-container"><div id="HEADLINE16" className="ladi-element"><h3 className="ladi-headline">1. NỘI DUNG THỎA THUẬN CUNG CẤP VÀ SỬ DỤNG DỊCH VỤ MẠNG XÃ HỘI TRÊN WEBSITE WWW.SPIDERUM.COM VÀ WWW.SPIDERUM.VN
             <br /><br /></h3></div><div id="PARAGRAPH17" className="ladi-element"><p className="ladi-paragraph">Spiderum nghiêm cấm tuyệt đối người sử dụng chia sẻ, đăng tải, bàn luận hay có bất cứ hành vi nào nhằm mục đích:
@@ -29,4 +29,4 @@ function privacy() {
             <br /><br />- Không được có bất kỳ hành vi nào nhằm đăng nhập trái phép hoặc tìm cách đăng nhập trái phép hoặc gây thiệt hại cho hệ thống máy chủ của doanh nghiệp.<br /></p></div></div>
   );
 }
-export default privacy;
+export default Privacy;

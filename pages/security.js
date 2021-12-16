@@ -1,6 +1,6 @@
 import React from 'react';
 
-function security() {
+function Security() {
   return (
     <div className="col-inner">
         <h2>Bình luận</h2>
@@ -28,4 +28,4 @@ function security() {
       </div>
   );
 }
-export default security;
+export default Security;
