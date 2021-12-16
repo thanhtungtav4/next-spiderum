@@ -1,11 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import PostService from '../services/post_service'
 import ItemRow from '../components/module/base/ItemRow'
 import style from '../styles/search.module.css'
+import axios from 'axios';
 import stylecraw from '../styles/Crawler.module.css'
+import { AuthContext } from "../services/AuthProvider";
 
 
 function Crawler() {
+  const {loggedIn, userDetails, token, auth} = useContext(AuthContext);
   const [Url, seturl ] = useState('');
   const [Categorys, setCategorys] = useState([]);
   const [is_Categorys, setIs_Categorys] = useState([]);
@@ -33,21 +36,41 @@ function Crawler() {
   }
   const handleCrawler = async ( e ) => {
     e.preventDefault();
-    const response = await PostService.postCrawler({
-      category: is_Categorys,
-      status: Status,
-      url: Url
+    if(token){
+      const header ={
+          "Authorization" : `Bearer ${token}`
+      } 
+      const response = axios.post(process.env.NEXT_PUBLIC_SHOP_URL + '/api/v1/crawler', {
+          headers: header,
+          category: is_Categorys,
+          status: Status,
+          url: Url
+         }).then(res => {
+          if (res?.status === 200) {
+            setLoading(false),
+            setIs_save(res?.data)
+          }
+        })
+        .catch(
+          err => setIs_ERR(true)
+        );
+    }
+    // const response = await PostService.postCrawler({
+    //   category: is_Categorys,
+    //   status: Status,
+    //   url: Url
 
-    }).then(res => {
-      if (res?.status === 200) {
-        setLoading(false),
-        setIs_save(res?.data)
-      }
-    })
-    .catch(
-      err => setIs_ERR(true)
-      // err =>console.log(err)
-    );
+    // }).then(res => {
+    //   if (res?.status === 200) {
+    //     setLoading(false),
+    //     setIs_save(res?.data)
+    //   }
+    // })
+    // .catch(
+    //   err => setIs_ERR(true)
+    //   // err =>console.log(err)
+    // );
+
  }
   return (
     <div className="row">
